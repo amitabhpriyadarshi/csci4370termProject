@@ -5,198 +5,774 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <html>
-    <head>
-        <title>Car Rental version 43</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="style/project.css">
-        <script src="Scripts/jquery-1.11.0.js" type="text/javascript"></script>
-        <script src="Scripts/jquery.ui.core.js" type="text/javascript"></script>
-        <script src="Scripts/jquery.ui.datepicker.js" type="text/javascript"></script>
-        
-        
-        <script type="text/javascript" src="vehicle.js"></script>
-       <!-- <script type="text/javascript" src="user.js"></script>
-        <script type="text/javascript" src="usersearch.js"></script>
-        <script type="text/javascript" src="insertuser.js"></script>  -->
-        <script type="text/javascript" src="rent.js"></script>
-        <script type="text/javascript" src="insertRent.js"></script>
-        
-    </head>
-    <body id="body">
-        <div><h1>Welcome to Car Rental</h1></div>
-        
-        
-        <table align="left"><tr><td valign="top">
-                    <ul>
-                        <li><a href="#" id="AllUser">List All Users</a></li>
-                        <li><a href="#" id="SearchUser">User Search</a></li>
-                        <li><a href="#" id="InsertUser">Insert the User</a></li>
-                        <li><a href="#" id="AllRent">Show All Rentals</a></li>
-                        <li><a href="#" id="InsertRent">Rent a Car</a></li>
-                        
-                    </ul>
-                </td><td> 
-                    
-                    <div id="AllUserDiv" class="form-style-2" hidden="true">
-                        <fieldset>
-                            <legend>All User Information</legend>
-                            
-                            
-                            <table class="bordered">
-                                <thead>
-                                    <tr>
-                                         
-                                         
-                                         
-                                        <td><b>Name</b></td>
-                                        <td><b>Phone</b></td>
-                                       <td><b>Dob</b></td>
-                                        <td><b>Email</b></td>
-                                        <td><b>DlNumber</b></td>
-                                        <td><b>ExpDate</b></td>
-                                        <td><b>IssueDate</b></td>
-                                       <td><b>UserID</b></td>
-                                        <td><b>Password</b></td>
-                                        <td><b>Street</b></td>
-                                        <td><b>ApartmentNo</b></td>
-                                        <td><b>City</b></td>
-                                        <td><b>State</b></td>
-                                        <td><b>Zip</b></td>
-                                        <td><b>Role</b></td>
-                                     </tr>
-                                </thead>
-                                <tbody id="ajaxResponse">
-                                </tbody>
-                            </table>
-                            
-                            
-                        </fieldset>
-                    </div>               
-                    <div id="SearchUserDiv" class="form-style-2" hidden="true">
-                        <form id="myAjaxRequestForm">
-                            <fieldset>
-                                <legend>Search User</legend>
-                                
-                                <p>
-                                    <label for="name">UserName:</label>
-                                    
-                                    <input id="name" type="text" name="name" />
-                                </p>
-                                <p>
-                                    <input id="SearchUserBt" type="button" value="Submit" />
-                                </p>
-                            </fieldset>
-                        </form>        
-                        
-                    </div>
-                    
-                    <div id="InsertUserDiv" class="form-style-2" hidden="true">
-                        <form id="InsertRequestForm">
-                            <fieldset>
-                                <legend>Insert User</legend>
-                                
-                                <table>
-                                    <tr><td>
-                                    <label for="userID">UserID:</label>
-                                    <input id="userID" type="text" name="userID" />
-                                    <label for="name">Name:</label>
-                                    <input id="name" type="text" name="name" />
-                                    <label for="phone">Phone:</label>
-                                    <input id="phone" type="text" name="phone" />
-                                    <label for="dob">DOB:</label>
-                                    <input id="dob" type="text" name="dob" />
-                                    <label for="email">Email:</label>
-                                    <input id="email" type="text" name="email" />
-                                    <label for="dlNumber">DL Number:</label>
-                                    <input id="dlNumber" type="text" name="dlNumber" />
-                                    
-                                    <label for="expDate">Expiration Date:</label>
-                                    <input id="expDate" type="text" name="expDate" />
-                                    <label for="issueDate">Issue Date:</label>
-                                    <input id="issueDate" type="text" name="issueDate" /></td><td>
-                                    <label for="password">Password:</label>
-                                    <input id="password" type="text" name="password" />
-                                    <label for="street">Street:</label>
-                                    <input id="street" type="text" name="street" />
-                                    <label for="apartmentNo">Apartment No:</label>
-                                    <input id="apartmentNo" type="text" name="apartmentNo" />
-                                    
-                                    <label for="city">City:</label>
-                                    <input id="city" type="text" name="city" />
-                                    
-                                    <label for="state">State:</label>
-                                    <input id="state" type="text" name="state" />
-                                    
-                                    <label for="zip">Zip:</label>
-                                    <input id="zip" type="text" name="zip" />
-                                    
-                                    <label for="role">Role:</label>
-                                    <input id="role" type="text" name="role" />
-                                <p>
-                                    <input id="insertuser" type="button" value="Submit" />
-                                </p></td></tr>
-                                </table>
-                            </fieldset>
-                        </form>        
-                        
-                    </div>
-                    
-                    <!-- DIV TO INSERT RENTALS -->
-                    <div id="InsertRentalsDiv" class="form-style-2" hidden="true">
-                    	<form id="InsertRentalForm">
-                    		<fieldset>
-                    			<legend>Rent a Car</legend>
-                    			
-                    			<table>
-                                    <tr><td>
-                                                                        
-                                    <label for="pickdate">Pick-up Date:</label>
-                                    <input id="pickupDate" type="text" name="pickdate" />
-                                    
-                                    <label for="returnDate">Return Date:</label>
-                                    <input id="returnDate" type="text" name="returnDate" />
-                                    
-                                    <select id="vehicleInfo">
-                                	</select>
-                                    
-                                	<p>
-                                   		<input id="insertRental" type="button" value="Submit" />
-                                	</p>
-                             
-                                	</td></tr>
-                                </table>
+<head>
+<title>Car Rental</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="style/project.css">
 
-                    		</fieldset>
-                    	</form>
-                    </div>
-                    
-                    <!-- DIV FOR TO SHOW ALL RENTALS -->
-                    <div id="AllRentalsDiv" class="form-style-2" hidden="true">
-                    	<legend>All Rentals</legend>
-                    	
-                    	<table class="bordered">
-                    		<thead>
-                    			<tr>
-                    				<td><b>id</b></td>
-                    				<td><b>pickupdate</b></td>
-                    				<td><b>returnDate</b></td>
-                    				<td><b>totalRent</b></td>
-                    				<td><b>tax</b></td>
-                    				<td><b>confirmationNo</b></td>
-                    				<td><b>user_id</b></td>
-                    				<td><b>vehicle_id</b></td>
-                    				<td><b>pickuploc_id</b></td>
-                    				<td><b>returnloc_id</b></td>
-                    			</tr>
-                    		</thead>
-                    		<tbody id="getAllRentals">
-                    		</tbody>
-                    	</table>
-                    </div>
-                </td></tr>
-        </table>
-        
-        
-    </body>
+<link rel="stylesheet" type="text/css" href="style/demo.css">
+<link rel="stylesheet" type="text/css" href="style/style_common.css">
+<link rel="stylesheet" type="text/css" href="style/style1.css">
+<link rel="stylesheet" type="text/css" href="style/anim.css">
+<link rel="stylesheet" href="style/styleshare.css">
+
+<script src="Scripts/jquery-1.11.0.js"></script>
+<script src="Scripts/jquery.ui.core.js"></script>
+<script src="Scripts/jquery.ui.datepicker.js" type="text/javascript"></script>
+<script src="Scripts/jquerycarou.js" type="text/javascript"></script>
+
+<script type="text/javascript" src="homeanim.js"></script>
+<script type="text/javascript" src="home.js"></script>
+<script type="text/javascript" src="vehicle.js"></script>
+<script type="text/javascript" src="user.js"></script>
+<script type="text/javascript" src="usersearch.js"></script>
+<script type="text/javascript" src="insertuser.js"></script>
+<script type="text/javascript" src="vehicleinfo.js"></script>
+<script type="text/javascript" src="register.js"></script>
+<script type="text/javascript" src="login.js"></script>
+<script type="text/javascript" src="insertvehicle.js"></script>
+<script type="text/javascript" src="about.js"></script>
+</head>
+
+<body id="body" background="image/Backgroundproj.jpg">
+	<div>
+		<table>
+			<tr>
+				<td valign="top" width="18%" style="white-space: nowrap;"><img
+					src="image/Leisure_Car_Rental.png" width="170" height="110"><img
+					src="image/car-rental.png" width="370" height="130">
+				<h1></h1></td>
+				<td valign="top" width="18%" style="white-space: nowrap;">
+					<div class="social-popout">
+						<img src="image/facebook.png" />
+					</div>
+					<div class="social-popout">
+						<img src="image/tumblr.png" />
+					</div>
+					<div class="social-popout">
+						<img src="image/twitter.png" />
+					</div>
+					<div class="social-popout">
+						<img src="image/googleplus.png" />
+					</div>
+
+				</td>
+			</tr>
+
+		</table>
+	</div>
+
+
+
+	<table align="left">
+		<tr>
+			<td valign="top" width="18%" style="white-space: nowrap;">
+				<div id="menu" class="form-style-3">
+					<fieldset>
+						<legend>Menu</legend>
+						<ul>
+							<img src="image/220.GIF">
+							<li><input id="Home" type="button" value="Home" /></li>
+							<li><input id="Login" type="button" value="Login" /></li>
+							<li><input id="AllUser" type="button" value="List All Users" /></li>
+							<li><input id="SearchUser" type="button" value="User Search" /></li>
+							<li><input id="InsertUser" type="button"
+								value="Insert the User" /></li>
+							<li><input id="VehicleInfo" type="button"
+								value="Vehicle Information" /></li>
+							<li><input id="AllVehicle" type="button"
+								value="List All Vehicles" /></li>
+							<li><input id="InsertVehicle" type="button"
+								value="Insert the Vehicle" /></li>
+							<li><input id="Logout" type="button" value="Logout" /></li>
+							<li><input id="About" type="button" value="About Us" /></li>
+						</ul>
+					</fieldset>
+				</div>
+			</td>
+			<td width="82%" style="white-space: nowrap;">
+
+				<div id="LoginDiv" class="form-style-2" hidden="true">
+					<form id="LoginForm">
+						<fieldset>
+							<legend>LogIn</legend>
+
+							<p>
+								<label for="userID">UserName:</label> <input id="userID"
+									type="text" name="userID" />
+							</p>
+							<p>
+								<label for="password">Password:</label> <input id="password"
+									type="text" name="password" />
+							</p>
+							<p>
+								<input id="LoginBt" type="button" value="Submit" />
+								&nbsp;&nbsp;&nbsp;&nbsp; <input id="LoginCancelBt" type="button"
+									value="Cancel" />
+							</p>
+
+
+							<br />
+							<p>
+								To Register Click<a href="#" id="Register"> Here</a>
+
+							</p>
+
+						</fieldset>
+					</form>
+
+				</div>
+
+				<div id="RegisterDiv" class="form-style-2" hidden="true">
+					<form id="RegisterForm">
+						<fieldset>
+							<legend>Register Form</legend>
+
+							<table>
+								<tr>
+									<td><label for="reg_userID">UserID:</label> <input
+										id="reg_userID" type="text" name="reg_userID" /> <label
+										for="reg_name">Name:</label> <input id="reg_name" type="text"
+										name="reg_name2" /> <label for="reg_phone">Phone:</label> <input
+										id="reg_phone" type="text" name="reg_phone" /> <label
+										for="reg_dob">DOB:</label> <input id="reg_dob" type="text"
+										name="reg_dob" /> <label for="reg_email">Email:</label> <input
+										id="reg_email" type="text" name="reg_email" /> <label
+										for="reg_dlNumber">DL Number:</label> <input id="reg_dlNumber"
+										type="text" name="reg_dlNumber" /> <label for="reg_expDate">Expiration
+											Date:</label> <input id="reg_expDate" type="text" name="reg_expDate" />
+										<label for="reg_issueDate">Issue Date:</label> <input
+										id="reg_issueDate" type="text" name="reg_issueDate" /></td>
+									<td><label for="reg_password">Password:</label> <input
+										id="reg_password" type="text" name="reg_password" /> <label
+										for="reg_street">Street:</label> <input id="reg_street"
+										type="text" name="reg_street" /> <label for="reg_apartmentNo">Apartment
+											No:</label> <input id="reg_apartmentNo" type="text"
+										name="reg_apartmentNo" /> <label for="reg_city">City:</label>
+										<input id="reg_city" type="text" name="reg_city" /> <label
+										for="reg_state">State:</label> <input id="reg_state"
+										type="text" name="reg_state" /> <label for="reg_zip">Zip:</label>
+										<input id="reg_zip" type="text" name="reg_zip" /> <label
+										for="reg_role">Role:</label> <input id="reg_role" type="text"
+										name="reg_role" />
+										<p>
+											<input id="RegisterBt" type="button" value="Register" />
+											&nbsp;&nbsp;&nbsp;&nbsp; <input id="RegisterCancelBt"
+												type="button" value="Cancel" />
+										</p></td>
+								</tr>
+							</table>
+						</fieldset>
+					</form>
+
+				</div>
+
+
+
+
+				<div id="AllUserDiv" class="form-style-2" hidden="true">
+					<fieldset>
+						<legend>All User Information</legend>
+
+
+						<table class="bordered">
+							<thead>
+								<tr>
+
+
+
+									<td><b>userID</b></td>
+									<td><b>Password</b></td>
+									<td><b>First Name</b></td>
+									<td><b>Last Name</b></td>
+									<td><b>DOB</b></td>
+									<td><b>Street</b></td>
+									<td><b>Phone #</b></td>
+									<td><b>Email</b></td>
+									<td><b>dlNumber</b></td>
+									<td><b>expDate</b></td>
+									<td><b>City</b></td>
+									<td><b>State</b></td>
+									<td><b>Zip</b></td>
+									<td><b>Role</b></td>
+								</tr>
+							</thead>
+							<tbody id="ajaxResponse">
+							</tbody>
+						</table>
+
+
+					</fieldset>
+				</div>
+				<div id="SearchUserDiv" class="form-style-2" hidden="true">
+					<form id="myAjaxRequestForm">
+						<fieldset>
+							<legend>Search User</legend>
+
+							<p>
+								<label for="name">UserName:</label> <input id="name" type="text"
+									name="name" />
+							</p>
+							<p>
+								<input id="SearchUserBt" type="button" value="Submit" />
+							</p>
+						</fieldset>
+					</form>
+
+				</div>
+
+				<div id="InsertUserDiv" class="form-style-2" hidden="true">
+					<form id="InsertUserRequestForm">
+						<fieldset>
+							<legend>Insert User</legend>
+
+							<table>
+								<tr>
+									<td>
+									<label for="userID">UserID:</label> 
+									<input id="insertUseruserID" type="text" name="userID" /> 
+									<label for="firstName">First Name:</label>
+									<input id="insertUserfirstName" type="text" name="firstName" /> 
+									<label for="phone">Phone:</label> 
+									<input id="insertUserphone" type="text" name="phone" /> 
+									<label for="dob">DOB:</label> 
+									<input id="insertUserdob" type="text" name="dob" /> 
+									<label for="email">Email:</label> 
+									<input id="insertUseremail" type="text" name="email" /> 
+									<label for="dlNumber">DLNumber:</label> 
+									<input id="insertUserdlNumber" type="text" name="dlNumber" />
+									<label for="expDate">Expiration Date:</label> 
+									<input id="insertUserexpDate" type="text" name="expDate" /> 
+									</td>
+									<td>
+									<label for="password">Password:</label> 
+									<input id="insertUserpassword" type="text" name="password" /> 
+									<label for="lastName">Last Name:</label>
+									<input id="insertUserlastName" type="text" name="lastName" />
+									<label for="street">Street:</label> 
+									<input id="insertUserstreet" type="text" name="street" /> 
+									<label for="city">City:</label> 
+									<input id="insertUsercity" type="text" name="city" /> 
+									<label for="state">State:</label> 
+									<input id="insertUserstate" type="text" name="state" /> 
+									<label for="zip">Zip:</label>
+									<input id="insertUserzip" type="text" name="zip" /> 
+									<p>
+										<input id="InsertUserBtn" type="button" value="Submit" />
+									</p>
+									</td>
+								</tr>
+							</table>
+						</fieldset>
+					</form>
+
+				</div>
+
+
+				<div id="AllVehicleDiv" class="form-style-2" hidden="true">
+					<fieldset>
+						<legend>All Vehicle Information</legend>
+
+
+						<table class="bordered">
+							<thead>
+								<tr>
+
+									<td><b>Name</b></td>
+									<td><b>Class</b></td>
+									<td><b>Model</b></td>
+									<td><b>Make</b></td>
+									<td><b>Color</b></td>
+									<td><b>Odometer</b></td>
+									<td><b>Transmission</b></td>
+									<td><b>Fuel</b></td>
+									<td><b>Drive</b></td>
+									<td><b>Type</b></td>
+									<td><b>WIN</b></td>
+									<td><b>NumberPlate</b></td>
+									<td><b>Status</b></td>
+
+								</tr>
+							</thead>
+							<tbody id="ajaxAllVehicleResponse">
+							</tbody>
+						</table>
+
+
+					</fieldset>
+				</div>
+
+				<div id="InsertVehicleDiv" class="form-style-2" hidden="true">
+					<form id="InsertVehicleRequestForm">
+						<fieldset>
+							<legend>Insert Vehicle</legend>
+
+
+							<table>
+								<tr>
+									<td><label for="vehiclename">Name:</label> <input
+										id="vehiclename" type="text" name="vehiclename" /> <label
+										for="classs">Class:</label> <input id="classs" type="text"
+										name="classs" /> <label for="model">Model:</label> <input
+										id="model" type="text" name="model" /> <label for="make">Make:</label>
+										<input id="make" type="text" name="make" /> <label
+										for="color">Color:</label> <input id="color" type="text"
+										name="color" /> <label for="odometer">Odometer:</label> <input
+										id="odometer" type="text" name="odometer" /> <label
+										for="transmission">Transmission:</label> <input
+										id="transmission" type="text" name="transmission" /> <label
+										for="fuel">Fuel:</label> <input id="fuel" type="text"
+										name="fuel" /></td>
+									<td><label for="drive">Drive:</label> <input id="drive"
+										type="text" name="drive" /> <label for="type">Type:</label> <input
+										id="type" type="text" name="type" /> <label for="win">WIN:</label>
+										<input id="win" type="text" name="win" /> <label
+										for="numberplate">Number Plate:</label> <input
+										id="numberplate" type="text" name="numberplate" /> <label
+										for="status">Status:</label> <input id="status" type="text"
+										name="status" />
+
+										<p>
+											<input id="InsertVehicleBt" type="button" value="Submit" />
+										</p></td>
+								</tr>
+							</table>
+						</fieldset>
+					</form>
+
+				</div>
+
+
+				<div id="VehicleInfoDiv" class="form-style-2" hidden="true">
+					<fieldset>
+						<legend>Vehicle Class And Information</legend>
+						<div class="container">
+							<div class="main">
+								<div class="view view-first">
+									<span><h2></h2>Economy</span> <img src="image/economy.png">
+									<div class="mask">
+										<h2>Economy</h2>
+										<p>
+											Kia Rio or similar</br> These rental cars feature:</br> 4 doors</br>
+											Automatic Transmission</br> Air Conditioning</br> AM/FM</br> $ 27.96 USD /
+											day
+										</p>
+									</div>
+								</div>
+								<div class="view view-first">
+									<span><h2></h2>Compact</span> <img src="image/compact.png">
+									<div class="mask">
+										<h2>Compact</h2>
+										<p>
+											Nissan Versa Note or similar</br> These rental cars feature:</br> 4
+											Doors</br> Automatic Transmission</br> Air Conditioning</br> $ 27.98 USD /
+											day
+										</p>
+									</div>
+								</div>
+								<div class="view view-first">
+									<span><h2></h2>Intermediate</span> <img
+										src="image/intermediate.png">
+									<div class="mask">
+										<h2>Intermediate</h2>
+
+
+										<p>
+											Toyota Corolla or similar</br> These rental cars feature:</br> 2 or 4
+											doors</br> Automatic Transmission</br> Air Conditioning</br> AM/FM CD Player</br>
+											$ 29.98 USD / day
+										</p>
+									</div>
+								</div>
+								<div class="view view-first">
+									<span><h2></h2>Standard</span> <img src="image/standard.png">
+									<div class="mask">
+										<h2>Standard</h2>
+										<p>
+											Volkswagan Jetta or similar</br> These rental cars feature:</br> 4
+											doors</br> Automatic Transmission</br> Air Conditioning</br> AM/FM CD Player</br>
+											Room to seat 5 passengers</br> $ 33.96 USD / day
+										</p>
+									</div>
+								</div>
+								<div class="view view-first">
+									<span><h2></h2>Full Size</span> <img src="image/fullsize.png">
+									<div class="mask">
+										<h2>Full Size</h2>
+										<p>
+											Ford Fusion or similar</br> These rental cars feature:</br> 4 doors</br>
+											Automatic Transmission</br> Air Conditioning</br> AM/FM CD Player</br> $
+											33.98 USD / day
+										</p>
+									</div>
+								</div>
+								<div class="view view-first">
+									<span><h2></h2>Premium</span> <img src="image/premium.png">
+									<div class="mask">
+
+										<h2>Premium</h2>
+										<p>
+											Chrysler 300 or similar</br> These rental cars feature:</br> 4 doors</br>
+											Automatic Transmission</br> Air Conditioning</br> AM/FM CD Player</br> $
+											64.99 USD / day
+										</p>
+									</div>
+								</div>
+								<div class="view view-first">
+									<span><h2></h2>Luxury</span> <img src="image/luxury.png">
+									<div class="mask">
+										<h2>Luxury</h2>
+										<p>
+											Cadillac DTS or similar</br> Cars feature: 4 doors</br> Automatic
+											Transmission</br> Air Conditioning</br> AM/FM CD Player</br> 6-8 Cylinder
+											Performance</br> Tilt/cruise Control</br> $ 99.98 USD / day
+										</p>
+									</div>
+								</div>
+								<div class="view view-first">
+									<span><h2></h2>Minivan</span> <img src="image/minivan.png">
+									<div class="mask">
+										<h2>Minivan</h2>
+										<p>
+											Dodge Grand Caravan </br> These rental cars feature:</br> Room to seat
+											7 passengers</br> Automatic Transmission</br> Air Conditioning</br>
+											6-Cylinder Performance</br> Tilt/cruise Control</br> $ 88.98 USD / day
+										</p>
+									</div>
+								</div>
+								<div class="view view-first">
+									<span><h2></h2>Luxury SUV</span> <img src="image/luxurysuv.png">
+									<div class="mask">
+										<h2>Luxury SUV</h2>
+										<p>
+											Lincoln Navigator or similar</br> Feature: Auto transmission</br> Power
+											Locks, Power Mirrors</br> Telescopic/Tilt Wheel</br> Adv Driver and
+											passenger airbags</br> Room to seat 7 passengers</br> $ 98.98 USD / day
+										</p>
+									</div>
+								</div>
+								<div class="view view-first">
+									<span><h2></h2>Intermediate SUV</span> <img
+										src="image/intermediatesuv.png">
+									<div class="mask">
+										<h2>Intermediate SUV</h2>
+										<p>
+											Toyota Rav4 or similar</br> These rental cars feature:</br> Room to
+											seat 5 Passengers</br> Automatic Transmission</br> Air conditioning</br>
+											AM/FM CD Player</br> Power windows and locks</br> $ 33.98 USD / day
+										</p>
+									</div>
+								</div>
+								<div class="view view-first">
+									<span><h2></h2>Standard SUV</span> <img
+										src="image/standardsuv.png">
+									<div class="mask">
+										<h2>Standard SUV</h2>
+										<p>
+											Hyundai Santa Fe or similar</br> Room to seat 5 passengers</br>
+											Automatic Transmission</br> Air Conditioning</br> 6-Cylinder
+											Performance</br> Tilt/cruise Control</br> Split Rear Seat</br> $ 48.98 USD /
+											day
+										</p>
+									</div>
+								</div>
+								<div class="view view-first">
+									<span><h2></h2>Large SUV</span> <img src="image/largesuv.png">
+									<div class="mask">
+										<h2>Large SUV</h2>
+										<p>
+											Chevrolet Tahoe or similar</br> Room to seat 7 passengers</br> V8
+											engine</br> Air conditioning</br> Audio system with FM/CD</br> Cruise
+											control</br> Power windows & locks</br> $ 68.98 USD / day
+										</p>
+									</div>
+								</div>
+								<div class="view view-first">
+									<span><h2></h2>Small Pickup</span> <img
+										src="image/smallpickup.png">
+									<div class="mask">
+										<h2>Small Pickup</h2>
+										<p>
+											Nissan Frontier or similar model</br> These rental cars feature:</br> 4
+											doors</br> Automatic transmission</br> Air conditioning</br> $ 49.99 USD /
+											day
+										</p>
+									</div>
+								</div>
+								<div class="view view-first">
+									<span><h2></h2>Full Size Crossover</span> <img
+										src="image/fullsizecrossover.png">
+									<div class="mask">
+										<h2>Full Size Crossover</h2>
+										<p>
+											Dodge Journey or similar</br> Automatic Transmission</br> Air
+											Conditioning</br> 6-Cylinder Performance</br> Tilt/cruise Control</br> Split
+											Rear Seat</br> $ 69.99 USD / day
+										</p>
+									</div>
+								</div>
+								<div class="view view-first">
+									<span><h2></h2>Pickup</span> <img src="image/pickup.png">
+									<div class="mask">
+										<h2>Pickup</h2>
+										<p>
+											Ram 1500 Quad Cab or similar model</br> These rental cars feature:</br>
+											4 doors</br> Automatic transmission</br> Air conditioning</br> $ 54.99 USD /
+											day
+										</p>
+									</div>
+								</div>
+								<div class="view view-first">
+									<span><h2></h2>Cargo Van</span> <img src="image/cargovan.png">
+									<div class="mask">
+										<h2>Cargo Van</h2>
+										<p>
+											Chevrolet Express Cargo or similar</br> AM/FM</br> A/C</br> Automatic</br> $
+											39.99 USD / day
+										</p>
+									</div>
+								</div>
+								<div class="view view-first">
+									<span><h2></h2>Luxury Elite SUV</span> <img
+										src="image/luxuryelitesuv.png">
+									<div class="mask">
+										<h2>Luxury Elite SUV</h2>
+										<p>
+											BMW X5 or similar model</br> These rental cars feature:</br> 4 doors</br>
+											Automatic transmission</br> Air conditioning</br> $ 74.99 USD / day
+										</p>
+									</div>
+								</div>
+								<div class="view view-first">
+									<span><h2></h2>Premium Elite SUV</span> <img
+										src="image/premiumelitesuv.png">
+									<div class="mask">
+										<h2>Premium Elite SUV</h2>
+										<p>
+											Cadillac SRX or similar model</br> These rental cars feature:</br> 4
+											doors</br> Automatic transmission</br> Air conditioning</br> $ 84.99 USD /
+											day
+										</p>
+									</div>
+								</div>
+								<div class="view view-first">
+									<span><h2></h2>9 Passenger Minivan </span> <img
+										src="image/9passengerminivan.png">
+									<div class="mask">
+										<h2>9 Passenger Minivan</h2>
+										<p>
+											Toyota Sienna or similar model</br> These rental cars feature:</br> 4
+											doors</br> Automatic transmission</br> Air conditioning</br> $ 89.99 USD /
+											day
+										</p>
+									</div>
+								</div>
+
+
+
+							</div>
+						</div>
+					</fieldset>
+				</div>
+
+
+				<div id="HomeDiv" class="form-style-2">
+
+					<H2>Welcome to car rentals.</H2>
+					<h5>
+						Every one once a while need to rent a vehicle for different
+						purposes even if they own their own car like if they are visiting
+						other state , moving out or any other uses. Renting <br /> a car
+						for your personal use or for business use is not a piece of cake.
+						These days renting a car is really time consuming and full of
+						hassle. You have to go to some of the car <br /> rental dealers
+						where you have to fill a lot of forms and to do so you have to
+						make time from your busy schedule. Our online car rental system
+						will make car renting easier than <br /> it’s never before. Our
+						system going to have a wide range of luxury, sports, and hybrid
+						vehicles available to meet your car rental needs. Apart from cars
+						you can also rent different<br /> devices to make your trip lot
+						easier and joyful like gps, insurance, radio etc which will
+						enhance your experience of your road-trip or business trip. The
+						main purpose to come up with <br /> this service is to save a lot
+						of time while renting cars for trips. <br />
+						<br />
+						<br />
+						<br />
+						<br />
+						<br />
+						<br />
+						<br />
+						<br />
+						<br />
+						<br />
+						<br />
+						<br />
+						<br />
+						<br />
+						<br />
+						<br />
+						<br />
+						<br />
+						<br />
+						<br />
+						<br />
+					</h5>
+					<div id="wrapper">
+						<div id="bg"></div>
+						<div id="carousel">
+
+							<div>
+								<img class="img-front" src="image/economy.png" alt="val1"
+									width="450" height="350" />
+								<!--<img class="img-back" src="img/val2.png" alt="val2" width="350" height="275" />-->
+								<h3>Economy</h3>
+								<p>
+									Kia Rio or similar</br> These rental cars feature:</br> 4 doors</br> Automatic
+									Transmission</br> Air Conditioning</br> AM/FM</br> $ 27.96 USD / day
+								</p>
+								<a href="#" id="RentNowBt">Rent Now &raquo;</a>
+
+
+
+							</div>
+
+
+
+							<div>
+								<img class="img-front" src="image/compact.png" alt="val1"
+									width="450" height="350" />
+								<!--<img class="img-back" src="img/val2.png" alt="val2" width="350" height="275" />-->
+								<h3>Compact</h3>
+								<p>
+									Nissan Versa Note or similar</br> These rental cars feature:</br> 4 Doors</br>
+									Automatic Transmission</br> Air Conditioning</br> $ 27.98 USD / day
+								</p>
+								<a href="#" id="RentNowBt2">Rent Now &raquo;</a>
+							</div>
+							<div>
+								<img class="img-front" src="image/intermediate.png" alt="val1"
+									width="450" height="350" />
+								<!--<img class="img-back" src="img/val2.png" alt="val2" width="350" height="275" />-->
+								<h3>Intermediate</h3>
+								<p>
+									Toyota Corolla or similar</br> These rental cars feature:</br> 2 or 4
+									doors</br> Automatic Transmission</br> Air Conditioning</br> AM/FM CD Player</br> $
+									29.98 USD / day
+								</p>
+								<a href="#" id="RentNowBt3">Rent Now &raquo;</a>
+							</div>
+							<div>
+								<img class="img-front" src="image/standard.png" alt="val1"
+									width="450" height="350" />
+								<!--<img class="img-back" src="img/val2.png" alt="val2" width="350" height="275" />-->
+								<h3>Standard</h3>
+								<p>
+									Volkswagan Jetta or similar</br> These rental cars feature:</br> 4 doors</br>
+									Automatic Transmission</br> Air Conditioning</br> AM/FM CD Player</br> Room to
+									seat 5 passengers</br> $ 33.96 USD / day
+								</p>
+								<a href="#" id="RentNowBt4">Rent Now &raquo;</a>
+							</div>
+
+
+
+							<div>
+								<img class="img-front" src="image/luxury.png" alt="val1"
+									width="450" height="350" />
+								<!--<img class="img-back" src="img/val2.png" alt="val2" width="350" height="275" />-->
+								<h3>Luxury</h3>
+								<p>
+									Cadillac DTS or similar</br> Cars feature: 4 doors</br> Automatic
+									Transmission</br> Air Conditioning</br> AM/FM CD Player</br> 6-8 Cylinder
+									Performance</br> Tilt/cruise Control</br> $ 99.98 USD / day
+								</p>
+								<a href="#" id="RentNowBt5">Rent Now &raquo;</a>
+							</div>
+							<div>
+								<img class="img-front" src="image/minivan.png" alt="val1"
+									width="450" height="350" />
+								<!--<img class="img-back" src="img/val2.png" alt="val2" width="350" height="275" />-->
+								<h3>Minivan</h3>
+								<p>
+									Dodge Grand Caravan </br> These rental cars feature:</br> Room to seat 7
+									passengers</br> Automatic Transmission</br> Air Conditioning</br> 6-Cylinder
+									Performance</br> Tilt/cruise Control</br> $ 88.98 USD / day
+								</p>
+								<a href="#" id="RentNowBt6">Rent Now &raquo;</a>
+							</div>
+							<div>
+								<img class="img-front" src="image/luxurysuv.png" alt="val1"
+									width="450" height="350" />
+								<!--<img class="img-back" src="img/val2.png" alt="val2" width="350" height="275" />-->
+								<h3>Luxury SUV</h3>
+								<p>
+									Lincoln Navigator or similar</br> Feature: Auto transmission</br> Power
+									Locks, Power Mirrors</br> Telescopic/Tilt Wheel</br> Adv Driver and
+									passenger airbags</br> Room to seat 7 passengers</br> $ 98.98 USD / day
+								</p>
+								<a href="#" id="RentNowBt7">Rent Now &raquo;</a>
+							</div>
+							<div>
+								<img class="img-front" src="image/pickup.png" alt="val1"
+									width="450" height="350" />
+								<!--<img class="img-back" src="img/val2.png" alt="val2" width="350" height="275" />-->
+								<h3>Pickup</h3>
+								<p>
+									Ram 1500 Quad Cab or similar model</br> These rental cars feature:</br> 4
+									doors</br> Automatic transmission</br> Air conditioning</br> $ 54.99 USD / day
+								</p>
+								<a href="#" id="RentNowBt8">Rent Now &raquo;</a>
+							</div>
+						</div>
+						<a id="prev" href="#"><span></span></a> <a id="next" href="#"><span></span></a>
+					</div>
+
+				</div>
+
+
+
+
+				<div id="AboutDiv" class="form-style-2" hidden="true">
+					<h4>About Us.</h4>
+					<table>
+						<tr>
+							<td><div class="social-popout">
+									<img src="image/abt.png" />
+								</div></td>
+							<td><b>Amitabh Priyadarshi</b><br>amitabh.priyadarshi@uga.edu</td>
+
+							<td><div class="social-popout">
+									<img src="image/abt.png" />
+								</div></td>
+							<td><b>Jeetendra Patil</b><br>jeetendra.patil@uga.edu</td>
+						</tr>
+						<tr>
+							<td><br>
+							<br>
+							<br></td>
+						</tr>
+
+						<tr>
+							<td><div class="social-popout">
+									<img src="image/abt.png" />
+								</div></td>
+							<td><b>Derek Chi</b><br>chiderek@gmail.com<br></td>
+
+							<td><div class="social-popout">
+									<img src="image/abt.png" />
+								</div></td>
+							<td><b>Zachary Augustus Stevens</b> </br>zstevens@uga.edu</td>
+						</tr>
+
+					</table>
+				</div>
+
+			</td>
+		</tr>
+	</table>
+
+
+</body>
 </html>

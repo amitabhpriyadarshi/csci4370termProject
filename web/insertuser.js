@@ -1,79 +1,88 @@
-$(document).ready(function() {
-       $("#myAjaxRequestForm").submit(function(e){
-                   e.preventDefault();
-            });
-       
+$(document).ready(
+		function() {
 
+			function User(userID, password, firstName, lastName, dob, street,
+					phone, email, dlNumber, expDate, city, state, zip) {
+				this.userID = userID;
+				this.password = password;
+				this.firstName = firstName;
+				this.lastName = lastName;
+				this.dob = dob;
+				this.street = street;
+				this.phone = phone;
+				this.email = email;
+				this.dlNumber = dlNumber;
+				this.expDate = expDate;
+				this.city = city;
+				this.state = state;
+				this.zip = zip;
+			}
 
+			function loadInitData() {
+				dataString = $("#InsertUserRequestForm").serialize();
 
-    function User(name,phone,dob,email,dlNumber,expDate,issueDate,userID,password,street,apartmentNo,city,state,zip,role){
-   
-        this.name=name;
-        this.phone = phone;
-        this.dob = dob;
-        this.email = email;
-        this.dlNumber = dlNumber;
-        this.expDate = expDate;
-        this.issueDate = issueDate;
-        this.userID =  userID;
-        this.password = password;
-        this.street = street;
-        this.apartmentNo = apartmentNo;
-        this.city = city;
-        this.state =  state;
-        this.zip = zip;
-        this.role = role;
-   
-    }
+				var userID = $("input#insertUseruserID").val();
+				var password = $("input#insertUserpassword").val();
+				var firstName = $("input#insertUserfirstName").val();
+				var lastName = $("input#insertUserlastName").val();
+				var dob = $("input#insertUserdob").val();
+				var street = $("input#insertUserstreet").val();
+				var phone = $("input#insertUserphone").val();
+				var email = $("input#insertUseremail").val();
+				var dlNumber = $("input#insertUserdlNumber").val();
+				var expDate = $("input#insertUserexpDate").val();
+				var city = $("input#insertUsercity").val();
+				var state = $("input#insertUserstate").val();
+				var zip = $("input#insertUserzip").val();
 
-    function loadInitData(){
-        dataString = $("#myAjaxRequestForm").serialize();
-                                var name = $("input#name").val(); 
+				dataString = {
+					userID : userID,
+					password : password,
+					firstName : firstName,
+					lastName : lastName,
+					dob : dob,
+					street : street,
+					phone : phone,
+					email : email,
+					dlNumber : dlNumber,
+					expDate : expDate,
+					city : city,
+					state : state,
+					zip : zip,
+				};
 
-        var phone = $("input#phone").val();
-        var dob = $("input#dob").val();
-        var email = $("input#email").val();
-        var dlNumber = $("input#dlNumber").val();
-        var expDate = $("input#expDate").val();
-        var issueDate = $("input#issueDate").val();
-        var userID = $("input#userID").val();
-        var password = $("input#password").val();
-        var street = $("input#street").val();
-        var apartmentNo = $("input#apartmentNo").val();
-        var city = $("input#city").val();
-        var state = $("input#state").val();
-        var zip = $("input#zip").val();
-        var role = $("input#role").val();
-        
+				$.ajax({
+					type : "POST",
+					url : "InsertUserService",
+					dataType : 'json',
+					data : dataString,
+					cache : false,
+					success : function(data, textStatus, xhr) {
+						console.log(data);
 
+					},
+					error : function(data, textStatus, errorThrown) {
+						console.log(textStatus)
+					}
+				});
+			}
 
-        $.ajax({
-            type: "POST",
-            url: "InsertUserService",
-            dataType: 'json',
-            data: {name: name, phone:phone,dob:dob, email:email,dlNumber:dlNumber,expDate:expDate,
-                issueDate:issueDate,userID:userID,password:password,street:street,apartmentNo:apartmentNo,
-                city:city,state:state,zip:zip,role:role},
-            cache: false,
-            success: function (data, textStatus, xhr) {
-                alert(data);
-               
-               
-            },
-            error: function (data, textStatus, errorThrown) {
-                console.log(textStatus)
-            }
-        });
-    }
-          
-    
-        $("#InsertUser").click(function(e){
-            
-               
-            $("#InsertUserDiv").show();	
-            $("#SearchUserDiv").hide();
-            $("#AllUserDiv").hide();             
-         loadInitData();
-            });
-     
-});
+			$("#InsertUser").click(function(e) {
+
+				$("#InsertUserDiv").show();
+				$("#SearchUserDiv").hide();
+				$("#AllUserDiv").hide();
+				$("#LoginDiv").hide();
+				$("#InsertVehicleDiv").hide();
+				$("#AllVehicleDiv").hide();
+				$("#VehicleInfoDiv").hide();
+				$("#HomeDiv").hide();
+				$("#AboutDiv").hide();
+				$("#RegisterDiv").hide();
+			});
+
+			$("#InsertUserBtn").click(function() {
+				loadInitData();
+			});
+
+		});

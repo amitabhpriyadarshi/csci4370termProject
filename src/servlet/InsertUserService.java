@@ -26,8 +26,8 @@ import java.util.List;
  *
  * @author amitabh
  */
-@WebServlet(name = "UserSearchService", urlPatterns = {"/UserSearchService"})
-public class InsertService extends HttpServlet {
+@WebServlet(name = "InsertUserService", urlPatterns = {"/InsertUserService"})
+public class InsertUserService extends HttpServlet {
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -37,10 +37,10 @@ public class InsertService extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet UserService</title>");
+            out.println("<title>Servlet InsertUserService</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet UserService at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet InsertUserService at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -57,26 +57,23 @@ public class InsertService extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
+        
         User usr = new User();
+        
         usr.setUserID(request.getParameter("userID"));
-        usr.setName(request.getParameter("name"));
-        usr.setPhone(request.getParameter("phone"));
+        usr.setPassword(request.getParameter("password"));
+        usr.setFirstName(request.getParameter("firstName"));
+        usr.setLastName(request.getParameter("lastName"));
         usr.setDob(request.getParameter("dob"));
+        usr.setStreet(request.getParameter("street"));
+        usr.setPhone(request.getParameter("phone"));
         usr.setEmail(request.getParameter("email"));
         usr.setDlNumber(request.getParameter("dlNumber"));
         usr.setExpDate(request.getParameter("expDate"));
-        usr.setIssueDate(request.getParameter("issueDate"));
-        usr.setPassword(request.getParameter("password"));
-        usr.setStreet(request.getParameter("street"));
-        usr.setApartmentNo(request.getParameter("apartmentNo"));
         usr.setCity(request.getParameter("city"));
         usr.setState(request.getParameter("state"));
         usr.setZip(request.getParameter("zip"));
-        usr.setRole(request.getParameter("role"));
-        
-        
-        
-         
+        usr.setRole("User");
          
         Dao dao=new Dao();
         String msg =dao.insertUser(usr);
