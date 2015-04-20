@@ -323,6 +323,7 @@ public class Dao {
             ps=con.prepareStatement(qry);
             rs=ps.executeQuery();
             while(rs.next()){
+            	
             	vehicleClass=new VehicleClass();
                 
                 vehicleClass.setClass_(rs.getString("class"));
@@ -366,5 +367,44 @@ public class Dao {
             address=null;
         }
      return addressList;
+    }
+    
+    public List<Rent> retrieveBookInfo(String userID){
+    	Rent rental = null;
+    	
+    	PreparedStatement ps=null;
+        ResultSet rs=null;
+        String qry="select * from rent where userID='"+userID+"'";
+        List<Rent> rentalList = new ArrayList();
+        try{
+            ps=con.prepareStatement(qry);
+            rs=ps.executeQuery();
+            while(rs.next()){
+            	rental=new Rent();
+                
+            	rental.setId(rs.getString("id"));
+                rental.setPickDate(rs.getString("pickDate"));
+                rental.setReturnDate(rs.getString("returnDate"));
+                rental.setTotalRent(rs.getString("totalRent"));
+                rental.setTax(rs.getString("tax"));
+                rental.setConfirmationNo(rs.getString("confirmationNo"));
+                rental.setUserID(rs.getString("userID"));
+                rental.setClass_(rs.getString("class"));
+                rental.setPickupLocID(rs.getString("pickupLocID"));
+                rental.setReturnLocID(rs.getString("returnLocID"));
+                rental.setGps(rs.getString("gps"));
+                rental.setDamageWaiver(rs.getString("damageWaiver"));
+                rental.setInsurance(rs.getString("insurance"));
+                rental.setRoadsideAssistance(rs.getString("roadsideAssistance"));
+                rental.setLiabilityProtection(rs.getString("liabilityProtection"));
+                
+            	rentalList.add(rental);
+            }
+            ps.close();            
+        }catch(Exception e){
+            e.printStackTrace();
+            rental=null;
+        }
+    	return rentalList;
     }
 }

@@ -54,7 +54,7 @@ $(document).ready(
 					cache : false,
 					success : function(data, textStatus, xhr) {
 						console.log(data);
-
+						alert("Insertion complete.");
 					},
 					error : function(data, textStatus, errorThrown) {
 						console.log(textStatus)
@@ -64,18 +64,19 @@ $(document).ready(
 
 			$("#InsertVehicle").click(function(e) {
 
-				$("#InsertUserDiv").hide();
-				$("#SearchUserDiv").hide();
+				$("#HomeDiv").hide();
 				$("#AllUserDiv").hide();
-				$("#InsertVehicleDiv").show();
-				$("#AllVehicleDiv").hide();
+				$("#SearchUserDiv").hide();
+				$("#InsertUserDiv").hide();
 				$("#VehicleInfoDiv").hide();
 				$("#LoginDiv").hide();
-				$("#HomeDiv").hide();
+				$("#InsertVehicleDiv").show();
+				$("#AllVehicleDiv").hide();
 				$("#AboutDiv").hide();
 				$("#RegisterDiv").hide();
 				$("#AllRentalsDiv").hide();
 				$("#InsertRentalDiv").hide();
+				$("#BookDiv").hide();
 			});
 
 			$("#InsertVehicleBtn").click(function(e) {

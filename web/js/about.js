@@ -7,8 +7,6 @@
 $(document).ready(function() {
 
 	$("#About").click(function(e) {
-		$("#AboutDiv").show();
-		$("#RegisterDiv").hide();
 		$("#HomeDiv").hide();
 		$("#AllUserDiv").hide();
 		$("#SearchUserDiv").hide();
@@ -17,7 +15,10 @@ $(document).ready(function() {
 		$("#LoginDiv").hide();
 		$("#InsertVehicleDiv").hide();
 		$("#AllVehicleDiv").hide();
+		$("#AboutDiv").show();
+		$("#RegisterDiv").hide();
 		$("#AllRentalsDiv").hide();
 		$("#InsertRentalDiv").hide();
+		$("#BookDiv").hide();
 	});
 });

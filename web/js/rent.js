@@ -108,8 +108,6 @@ $(function() {
 	}
 
 	$("#AllRentals").on('click', function() {
-		$("#AboutDiv").hide();
-		$("#RegisterDiv").hide();
 		$("#HomeDiv").hide();
 		$("#AllUserDiv").hide();
 		$("#SearchUserDiv").hide();
@@ -118,8 +116,11 @@ $(function() {
 		$("#LoginDiv").hide();
 		$("#InsertVehicleDiv").hide();
 		$("#AllVehicleDiv").hide();
+		$("#AboutDiv").hide();
+		$("#RegisterDiv").hide();
 		$("#AllRentalsDiv").show();
 		$("#InsertRentalDiv").hide();
+		$("#BookDiv").hide();
 
 		loadInitData();
 	})

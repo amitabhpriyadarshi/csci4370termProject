@@ -55,7 +55,6 @@ public class InsertRentService extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
     	PrintWriter out = response.getWriter();
-    	
     	Dao dao = new Dao();
     	List<VehicleClass> vehicleClassList = dao.retrieveAllVehicleClass();
     	String res = toJSONString(vehicleClassList);

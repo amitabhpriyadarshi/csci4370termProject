@@ -8,6 +8,7 @@ $(document).ready(function() {
 
 	$("#VehicleInfo").click(function(e) {
 
+		$("#HomeDiv").hide();
 		$("#AllUserDiv").hide();
 		$("#SearchUserDiv").hide();
 		$("#InsertUserDiv").hide();
@@ -15,11 +16,11 @@ $(document).ready(function() {
 		$("#LoginDiv").hide();
 		$("#InsertVehicleDiv").hide();
 		$("#AllVehicleDiv").hide();
-		$("#HomeDiv").hide();
-		$("#RegisterDiv").hide();
 		$("#AboutDiv").hide();
+		$("#RegisterDiv").hide();
 		$("#AllRentalsDiv").hide();
 		$("#InsertRentalDiv").hide();
+		$("#BookDiv").hide();
 	});
 
 });

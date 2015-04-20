@@ -94,18 +94,19 @@ $(document).ready(
 
 			$("#SearchUser").click(function(e) {
 
+				$("#HomeDiv").hide();
 				$("#AllUserDiv").hide();
 				$("#SearchUserDiv").show();
 				$("#InsertUserDiv").hide();
-				$("#LoginDiv").hide();
 				$("#VehicleInfoDiv").hide();
+				$("#LoginDiv").hide();
 				$("#InsertVehicleDiv").hide();
 				$("#AllVehicleDiv").hide();
-				$("#HomeDiv").hide();
 				$("#AboutDiv").hide();
 				$("#RegisterDiv").hide();
 				$("#AllRentalsDiv").hide();
 				$("#InsertRentalDiv").hide();
+				$("#BookDiv").hide();
 			});
 			$("#SearchUserBt").click(function(e) {
 				loadSearchData();

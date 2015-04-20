@@ -73,9 +73,9 @@ $(function() {
 			data : dataString1,
 			cache : false,
 			success : function(data, textStatus, xhr) {
-
+				console.log("hit");
 				createVehicleClassList(data);
-
+				console.log("vehicleClassList", vehicleClassList);
 				$("#vehicleInfo").html("");
 
 				var vehicleInfoBody = $("#vehicleInfo");
@@ -261,7 +261,10 @@ $(function() {
 	
 	$("#RentCarBtn").on('click', function() {
 		dataString = $("#myAjaxRequestForm").serialize();
-
+		if(!globalUser){
+			alert("Please log in.");
+			return;
+		}
 		/*
 		 * These variables are just stubs..
 		 * TODO: fix these variables to match with database and give best type of data
@@ -272,7 +275,7 @@ $(function() {
 		var tax = taxDisplay;
 		var confirmationNo = generateConfirmationNo();
 		//TODO: get the actual userID
-		var userID = "dchi";
+		var userID = globalUser.userID;
 		var class_ = $("#vehicleInfo :selected").val();
 		var pickupLocID = getAddressID(pickUpLocSelectedState, $("#RentCarPickUpLocAddress :selected").val()); 
 		var returnLocID = getAddressID(returnLocSelectedState, $("#RentCarReturnLocAddress :selected").val());
@@ -305,9 +308,24 @@ $(function() {
 			cache : false,
 			success : function(data, textStatus, xhr) {
 				console.log(data);
+				console.log('SHOW BOOK DIV');
+				$("#HomeDiv").hide();
+				$("#AllUserDiv").hide();
+				$("#SearchUserDiv").hide();
+				$("#InsertUserDiv").hide();
+				$("#VehicleInfoDiv").hide();
+				$("#LoginDiv").hide();
+				$("#InsertVehicleDiv").hide();
+				$("#AllVehicleDiv").hide();
+				$("#AboutDiv").hide();
+				$("#RegisterDiv").hide();
+				$("#AllRentalsDiv").hide();
+				$("#InsertRentalDiv").hide();
+				$("#BookDiv").show();
 			},
 			error : function(data, textStatus, errorThrown) {
 				console.log(textStatus)
+				alert("Please log in.");
 			}
 		});
 	})
@@ -418,8 +436,6 @@ $(function() {
 	}
 	
 	$("#InsertRental").on('click', function() {
-		$("#AboutDiv").hide();
-		$("#RegisterDiv").hide();
 		$("#HomeDiv").hide();
 		$("#AllUserDiv").hide();
 		$("#SearchUserDiv").hide();
@@ -428,8 +444,11 @@ $(function() {
 		$("#LoginDiv").hide();
 		$("#InsertVehicleDiv").hide();
 		$("#AllVehicleDiv").hide();
+		$("#AboutDiv").hide();
+		$("#RegisterDiv").hide();
 		$("#AllRentalsDiv").hide();
 		$("#InsertRentalDiv").show();
+		$("#BookDiv").hide();
 
 		loadInitData();
 	})

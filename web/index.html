@@ -15,7 +15,10 @@ and open the template in the editor.
 <link rel="stylesheet" type="text/css" href="style/style_common.css">
 <link rel="stylesheet" type="text/css" href="style/style1.css">
 <link rel="stylesheet" type="text/css" href="style/anim.css">
-<link rel="stylesheet" href="style/styleshare.css">
+<link rel="stylesheet" type="text/css" href="style/theme.css">
+<link rel="stylesheet" type="text/css" href="style/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="style/jquery-ui.min.css">
+<link rel="stylesheet" type="text/css" href="style/styleshare.css">
 
 <script src="Scripts/jquery-1.11.0.js"></script>
 <script src="Scripts/jquery.ui.core.js"></script>
@@ -39,6 +42,10 @@ and open the template in the editor.
 <!-- INSERT RENT MODULE -->
 <script type="text/javascript" src="js/rent.js"></script>
 <script type="text/javascript" src="js/insertRent.js"></script>
+<script type="text/javascript" src="js/book.js"></script>
+<script>
+	var globalUser;
+</script>
 </head>
 
 <body id="body" background="image/Backgroundproj.jpg">
@@ -76,21 +83,21 @@ and open the template in the editor.
 			<td valign="top" width="18%" style="white-space: nowrap;">
 				<div id="menu" class="form-style-3">
 					<fieldset>
-						<legend>Menu</legend>
+						<legend id="username">Menu</legend>
 						<ul>
 							<img src="image/220.GIF">
-							<li><input id="Home" type="button" value="Home" /></li>
-							<li><input id="Login" type="button" value="Login" /></li>
-							<li><input id="AllUser" type="button" value="List All Users" /></li>
-							<li><input id="SearchUser" type="button" value="User Search" /></li>
-							<li><input id="InsertUser" type="button" value="Insert the User" /></li>
-							<li><input id="VehicleInfo" type="button" value="Vehicle Information" /></li>
-							<li><input id="AllVehicle" type="button" value="List All Vehicles" /></li>
-							<li><input id="InsertVehicle" type="button" value="Insert the Vehicle" /></li>
-							<li><input id="AllRentals" type="button" value="List All Rentals"/></li>
-							<li><input id="InsertRental" type="button" value="Rent a Car" /></li>
-							<li><input id="Logout" type="button" value="Logout" /></li>
-							<li><input id="About" type="button" value="About Us" /></li>
+							<li id="Home"><input type="button" value="Home" /></li>
+							<li id="Login"><input type="button" value="Login" /></li>
+							<li id="AllUser"><input type="button" value="List All Users" /></li>
+							<li id="SearchUser"><input type="button" value="User Search" /></li>
+							<li id="InsertUser"><input type="button" value="Insert the User" /></li>
+							<li id="VehicleInfo"><input type="button" value="Vehicle Information" /></li>
+							<li id="AllVehicle"><input type="button" value="List All Vehicles" /></li>
+							<li id="InsertVehicle"><input type="button" value="Insert the Vehicle" /></li>
+							<li id="AllRentals"><input type="button" value="List All Rentals"/></li>
+							<li id="InsertRental"><input type="button" value="Rent a Car" /></li>
+							<li id="Logout"><input type="button" value="Logout" /></li>
+							<li id="About"><input type="button" value="About Us" /></li>
 						</ul>
 					</fieldset>
 				</div>
@@ -141,7 +148,7 @@ and open the template in the editor.
 									<label for="reg_phone">Phone:</label> 
 									<input id="reg_phone" type="text" name="reg_phone" /> 
 									<label for="reg_dob">DOB:</label> 
-									<input id="reg_dob" type="text" name="reg_dob" /> 
+									<input id="reg_dob" placeholder="YYYY-MM-DD" name="reg_dob" /> 
 									<label for="reg_email">Email:</label> 
 									<input id="reg_email" type="text" name="reg_email" /> 
 									<label for="reg_dlNumber">DL Number:</label> 
@@ -201,7 +208,7 @@ and open the template in the editor.
 								</tr>
 							</thead>
 							
-							<tbody id="ajaxResponse">
+							<tbody id="userAjaxResponse">
 							</tbody>
 						</table>
 					</fieldset>
@@ -612,7 +619,7 @@ and open the template in the editor.
 						<br />
 						<br />
 						<br />
-						<br />
+						<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 						<br />
 						<br />
 					</h5>
@@ -837,6 +844,7 @@ and open the template in the editor.
 									
 									<td>
 									<p id="RentCarCostPerDay"></p>
+									<p id="RentCarDays">0 days</p>
 									<p id="RentCarSubTotal">SubTotal: $0.00</p>
 									<p id="RentCarTax">Tax: $0.00</p>
 									<p id="RentCarTotal">Total: $0.00</p>
@@ -850,11 +858,37 @@ and open the template in the editor.
 						</fieldset>
 					</form>
 				</div>
+			
+				
+                    <div id="BookDiv" class="form-style-2" hidden="true">
+                        <fieldset>
+                            <legend>Booking Details</legend>
+                            <table id="BookBody" border=0>
+                             
+
+                            </table>
+                            <input type="button" onclick="printDiv('BookDiv')" value="print" />
+                            </fieldset>
+                    </div>
 				
 			</td>
 		</tr>
 	</table>
+					<script>
+    function printDiv(divName) {
+		var printContents = document.getElementById(divName).innerHTML;
+		var originalContents = document.body.innerHTML;
 
+		document.body.innerHTML = printContents;
 
+     window.print();
+
+		document.body.innerHTML = originalContents;
+	}
+</script>
+
+<footer>
+	<p>Images taken from the World Wide Web</p>
+</footer>
 </body>
 </html>

@@ -5,8 +5,17 @@
  */
 
 $(document).ready(
+		
 		function() {
-
+			
+			$("#Logout").hide();
+			$("#AllUser").hide();
+			$("#SearchUser").hide();
+			$("#InsertUser").hide();
+			$("#AllVehicle").hide();
+			$("#InsertVehicle").hide();
+			$("#AllRentals").hide();
+			
 			var userArray = new Array();
 
 			function User(userID, password, firstName, lastName, dob, street,
@@ -45,10 +54,66 @@ $(document).ready(
 						for (i = 0; i < userArray.length; i++) {
 							usr = userArray[i];
 							if (userID === usr.userID && password === usr.password) {
-								alert("login successful");
+								globalUser = {
+										userID : usr.userID,
+										role : usr.role
+								};
+								if(globalUser.role === "Admin"){
+									console.log("globalUser is admin");
+									$("#AllUser").show();
+									$("#SearchUser").show();
+									$("#InsertUser").hide();
+									$("#AllVehicle").show();
+									$("#InsertVehicle").show();
+									$("#AllRentals").show();
+									$("#Login").hide();
+									$("#Logout").show();
+									
+									$("#HomeDiv").show();
+									$("#AllUserDiv").hide();
+									$("#SearchUserDiv").hide();
+									$("#InsertUserDiv").hide();
+									$("#VehicleInfoDiv").hide();
+									$("#LoginDiv").hide();
+									$("#InsertVehicleDiv").hide();
+									$("#AllVehicleDiv").hide();
+									$("#AboutDiv").hide();
+									$("#RegisterDiv").hide();
+									$("#AllRentalsDiv").hide();
+									$("#InsertRentalDiv").hide();
+									$("#BookDiv").hide();
+									
+									$("#username").html("Menu &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Welcome " + globalUser.userID + "!");
+								}else if(globalUser.role === 'User' || globalUser.role === 'user'){
+									$("#AllUser").hide();
+									$("#Login").hide();
+									$("#SearchUser").hide();
+									$("#InsertUser").hide();
+									$("#AllVehicle").hide();
+									$("#InsertVehicle").hide();
+									$("#AllRentals").hide();
+									$("#Logout").show();
+									
+									$("#HomeDiv").hide();
+									$("#AllUserDiv").hide();
+									$("#SearchUserDiv").hide();
+									$("#InsertUserDiv").hide();
+									$("#VehicleInfoDiv").hide();
+									$("#LoginDiv").hide();
+									$("#InsertVehicleDiv").hide();
+									$("#AllVehicleDiv").hide();
+									$("#AboutDiv").hide();
+									$("#RegisterDiv").hide();
+									$("#AllRentalsDiv").hide();
+									$("#InsertRentalDiv").hide();
+									$("#BookDiv").show();
+									$("#username").html("Menu &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Welcome " + globalUser.userID + "!");s
+								}
 								break;
 							} else {
 								alert("login failed");
+								$("#HomeDiv").show();
+								$("#LoginDiv").hide();
 							}
 						}
 					},
@@ -58,6 +123,34 @@ $(document).ready(
 				});
 
 			}
+			
+			function logout(){
+				globalUser = "";
+				$("#username").html("Menu");
+				$("#AllUser").hide();
+				$("#Login").show();
+				$("#SearchUser").hide();
+				$("#InsertUser").hide();
+				$("#AllVehicle").hide();
+				$("#InsertVehicle").hide();
+				$("#AllRentals").hide();
+				$("#Logout").hide();
+				
+				$("#HomeDiv").show();
+				$("#AllUserDiv").hide();
+				$("#SearchUserDiv").hide();
+				$("#InsertUserDiv").hide();
+				$("#VehicleInfoDiv").hide();
+				$("#LoginDiv").hide();
+				$("#InsertVehicleDiv").hide();
+				$("#AllVehicleDiv").hide();
+				$("#AboutDiv").hide();
+				$("#RegisterDiv").hide();
+				$("#AllRentalsDiv").hide();
+				$("#InsertRentalDiv").hide();
+				$("#BookDiv").hide();
+			}
+			
 			function createLoginDataList(JsonObject) {
 				userArray.length = 0;
 				$.each(JsonObject, function(key, object) {
@@ -83,6 +176,7 @@ $(document).ready(
 				$("#RegisterDiv").hide();
 				$("#AllRentalsDiv").hide();
 				$("#InsertRentalDiv").hide();
+				$("#BookDiv").hide();
 			});
 			
 			$("#LoginCancelBtn").click(function(e) {
@@ -95,21 +189,19 @@ $(document).ready(
 				$("#RegisterDiv").hide();
 				$("#InsertVehicleDiv").hide();
 				$("#AllVehicleDiv").hide();
-				$("#HomeDiv").hide();
+				$("#HomeDiv").show();
 				$("#AboutDiv").hide();
 				$("#RegisterDiv").hide();
 				$("#AllRentalsDiv").hide();
 				$("#InsertRentalDiv").hide();
+				$("#BookDiv").hide();
 			});
 
 			$("#LoginBtn").click(function(e) {
 				login();
-				$("#SearchUserDiv").hide();
-				$("#InsertUserDiv").hide();
-				$("#AllUserDiv").hide();
-				alert("logging in...");
-				
-
 			});
-
+			
+			$("#Logout").click(function(){
+				logout();
+			})
 		});

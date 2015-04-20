@@ -56,6 +56,7 @@ $(document).ready(
 			
 			$("#AllUser").click(function(e) {
 
+				$("#HomeDiv").hide();
 				$("#AllUserDiv").show();
 				$("#SearchUserDiv").hide();
 				$("#InsertUserDiv").hide();
@@ -65,12 +66,12 @@ $(document).ready(
 				$("#AllVehicleDiv").hide();
 				$("#AboutDiv").hide();
 				$("#RegisterDiv").hide();
-				$("#HomeDiv").hide();
 				$("#AllRentalsDiv").hide();
 				$("#InsertRentalDiv").hide();
+				$("#BookDiv").hide();
 				
-				$("#ajaxResponse").html("");
-				var listTableBody = $("#ajaxResponse");
+				$("#userAjaxResponse").html("");
+				var listTableBody = $("#userAjaxResponse");
 				listTableBody.empty();
 				for (i = 0; i < userArray.length; i++) {
 					usr = userArray[i];

@@ -92,18 +92,19 @@ $(document).ready(
 
 			$("#AllVehicle").click(function(e) {
 
+				$("#HomeDiv").hide();
 				$("#AllUserDiv").hide();
 				$("#SearchUserDiv").hide();
 				$("#InsertUserDiv").hide();
-				$("#AllVehicleDiv").show();
-				$("#RegisterDiv").hide();
-				$("#HomeDiv").hide();
 				$("#VehicleInfoDiv").hide();
 				$("#LoginDiv").hide();
 				$("#InsertVehicleDiv").hide();
+				$("#AllVehicleDiv").show();
 				$("#AboutDiv").hide();
+				$("#RegisterDiv").hide();
 				$("#AllRentalsDiv").hide();
 				$("#InsertRentalDiv").hide();
+				$("#BookDiv").hide();
 				
 			});
 

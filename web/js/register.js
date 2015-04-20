@@ -2,18 +2,19 @@ $(document).ready(
 		function() {
 			$("#Register").click(function(e) {
 
-				$("#RegisterDiv").show();
-				$("#InsertUserDiv").hide();
-				$("#SearchUserDiv").hide();
+				$("#HomeDiv").hide();
 				$("#AllUserDiv").hide();
+				$("#SearchUserDiv").hide();
+				$("#InsertUserDiv").hide();
+				$("#VehicleInfoDiv").hide();
 				$("#LoginDiv").hide();
 				$("#InsertVehicleDiv").hide();
 				$("#AllVehicleDiv").hide();
-				$("#VehicleInfoDiv").hide();
-				$("#HomeDiv").hide();
 				$("#AboutDiv").hide();
+				$("#RegisterDiv").show();
 				$("#AllRentalsDiv").hide();
 				$("#InsertRentalDiv").hide();
+				$("#BookDiv").hide();
 			});
 
 			function User(userID, password, firstName, lastName, dob, street,
@@ -76,37 +77,75 @@ $(document).ready(
 					cache : false,
 					success : function(data, textStatus, xhr) {
 						console.log(data);
+						
+						globalUser = {
+								userID : usr.userID,
+								role : usr.role
+						};
+						
+						$("#Login").hide();
+						$("#Logout").show();
+						$("#AllUser").hide();
+						$("#SearchUser").hide();
+						$("#InsertUser").hide();
+						$("#AllVehicle").hide();
+						$("#InsertVehicle").hide();
+						$("#AllRentals").hide();
+						
+						$("#HomeDiv").show();
+						$("#AllUserDiv").hide();
+						$("#SearchUserDiv").hide();
+						$("#InsertUserDiv").hide();
+						$("#VehicleInfoDiv").hide();
+						$("#LoginDiv").hide();
+						$("#InsertVehicleDiv").hide();
+						$("#AllVehicleDiv").hide();
+						$("#AboutDiv").hide();
+						$("#RegisterDiv").hide();
+						$("#AllRentalsDiv").hide();
+						$("#InsertRentalDiv").hide();
+						$("#BookDiv").hide();
 
+						$("#username").html("Menu &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Welcome " + globalUser.userID + "!");
 					},
 					error : function(data, textStatus, errorThrown) {
 						console.log(textStatus)
+						alert("One or more fields has been entered incorrectly.");
 					}
 				});
 			}
 
 			$("#RegisterBtn").click(function(e) {
 				loadRegisterData();
-				$("#RegisterDiv").hide();
-				$("#InsertUserDiv").hide();
-				$("#SearchUserDiv").hide();
-				$("#AllUserDiv").hide();
-				$("#LoginDiv").show();
 				$("#HomeDiv").hide();
+				$("#AllUserDiv").hide();
+				$("#SearchUserDiv").hide();
+				$("#InsertUserDiv").hide();
 				$("#VehicleInfoDiv").hide();
+				$("#LoginDiv").hide();
+				$("#InsertVehicleDiv").hide();
+				$("#AllVehicleDiv").hide();
 				$("#AboutDiv").hide();
+				$("#RegisterDiv").hide();
+				$("#AllRentalsDiv").hide();
 				$("#InsertRentalDiv").hide();
+				$("#BookDiv").hide();
 			});
 			
 			$("#RegisterCancelBtn").click(function(e) {
-				$("#RegisterDiv").hide();
-				$("#InsertUserDiv").hide();
-				$("#SearchUserDiv").hide();
-				$("#AllUserDiv").hide();
-				$("#LoginDiv").show();
 				$("#HomeDiv").hide();
+				$("#AllUserDiv").hide();
+				$("#SearchUserDiv").hide();
+				$("#InsertUserDiv").hide();
 				$("#VehicleInfoDiv").hide();
+				$("#LoginDiv").show();
+				$("#InsertVehicleDiv").hide();
+				$("#AllVehicleDiv").hide();
 				$("#AboutDiv").hide();
+				$("#RegisterDiv").hide();
+				$("#AllRentalsDiv").hide();
 				$("#InsertRentalDiv").hide();
+				$("#BookDiv").hide();
 			});
 
 		});
