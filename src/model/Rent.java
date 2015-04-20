@@ -6,15 +6,21 @@ package model;
 public class Rent {
 	
 	String id;
-	String pickdate;
+	String pickDate;
 	String returnDate;
 	String totalRent;
 	String tax;
 	String confirmationNo;
-	String user_id;
-	String vehicle_id;
-	String pickuploc_id;
-	String returnloc_id;
+	String userID;
+	/* Gotta put the underscore because class is a reserved word */
+	String class_;
+	String pickupLocID;
+	String returnLocID;
+	String gps;
+	String damageWaiver;
+	String insurance;
+	String roadsideAssistence;
+	String liabilityProtection;
 	
 	public String getId() {
 		return id;
@@ -22,11 +28,11 @@ public class Rent {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getPickdate() {
-		return pickdate;
+	public String getPickDate() {
+		return pickDate;
 	}
-	public void setPickdate(String pickdate) {
-		this.pickdate = pickdate;
+	public void setPickDate(String pickDate) {
+		this.pickDate = pickDate;
 	}
 	public String getReturnDate() {
 		return returnDate;
@@ -52,30 +58,59 @@ public class Rent {
 	public void setConfirmationNo(String confirmationNo) {
 		this.confirmationNo = confirmationNo;
 	}
-	public String getUser_id() {
-		return user_id;
+	public String getUserID() {
+		return userID;
 	}
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
+	public void setUserID(String userID) {
+		this.userID = userID;
 	}
-	public String getVehicle_id() {
-		return vehicle_id;
+	public String getClass_() {
+		return class_;
 	}
-	public void setVehicle_id(String vehicle_id) {
-		this.vehicle_id = vehicle_id;
+	public void setClass_(String class_) {
+		this.class_ = class_;
 	}
-	public String getPickuploc_id() {
-		return pickuploc_id;
+	public String getPickupLocID() {
+		return pickupLocID;
 	}
-	public void setPickuploc_id(String pickuploc_id) {
-		this.pickuploc_id = pickuploc_id;
+	public void setPickupLocID(String pickupLocID) {
+		this.pickupLocID = pickupLocID;
 	}
-	public String getReturnloc_id() {
-		return returnloc_id;
+	public String getReturnLocID() {
+		return returnLocID;
 	}
-	public void setReturnloc_id(String returnloc_id) {
-		this.returnloc_id = returnloc_id;
+	public void setReturnLocID(String returnLocID) {
+		this.returnLocID = returnLocID;
 	}
-	
+	public String getGps() {
+		return gps;
+	}
+	public void setGps(String gps) {
+		this.gps = gps;
+	}
+	public String getDamageWaiver() {
+		return damageWaiver;
+	}
+	public void setDamageWaiver(String damageWaiver) {
+		this.damageWaiver = damageWaiver;
+	}
+	public String getInsurance() {
+		return insurance;
+	}
+	public void setInsurance(String insurance) {
+		this.insurance = insurance;
+	}
+	public String getRoadsideAssistence() {
+		return roadsideAssistence;
+	}
+	public void setRoadsideAssistence(String roadsideAssistence) {
+		this.roadsideAssistence = roadsideAssistence;
+	}
+	public String getLiabilityProtection() {
+		return liabilityProtection;
+	}
+	public void setLiabilityProtection(String liabilityProtection) {
+		this.liabilityProtection = liabilityProtection;
+	}
 	
 }
