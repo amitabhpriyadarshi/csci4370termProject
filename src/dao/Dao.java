@@ -201,12 +201,10 @@ public List<Vehicle> retrieveAllVehicle(){
             ps=con.prepareStatement(qry);
             rs=ps.executeQuery();
             while(rs.next()){
-                  
-         
                 vehicle=new Vehicle();
                 
-                vehicle.setName(rs.getString("name"));
-                vehicle.setClasss(rs.getString("classs"));
+                vehicle.setId(rs.getString("id"));
+                vehicle.setClass_(rs.getString("class"));
                 vehicle.setModel(rs.getString("model"));
                 vehicle.setMake(rs.getString("make"));
                 vehicle.setColor(rs.getString("color"));
@@ -214,13 +212,11 @@ public List<Vehicle> retrieveAllVehicle(){
                 vehicle.setTransmission(rs.getString("transmission"));
                 vehicle.setFuel(rs.getString("fuel"));
                 vehicle.setDrive(rs.getString("drive"));
-                vehicle.setType(rs.getString("type"));
-                vehicle.setWin(rs.getString("win"));
-                vehicle.setNumberplate(rs.getString("numberplate"));
+                vehicle.setPlateNumber(rs.getString("plateNumber"));
                 vehicle.setStatus(rs.getString("status"));
                 
                 vehicleList.add(vehicle);
-                }
+            }
             ps.close();            
         }catch(Exception e){
             e.printStackTrace();
@@ -230,19 +226,15 @@ public List<Vehicle> retrieveAllVehicle(){
     }
      
      
-      public String insertVehicle(Vehicle vehicle){
-        
+    public String insertVehicle(Vehicle vehicle){
         
         PreparedStatement ps=null;
         ResultSet rs=null;
         
-        String qry="INSERT INTO vehicle (name,classs,model,make,color,odometer,transmission,fuel,drive,type,win,numberPlate,status)VALUES('"+
-                vehicle.getName()+"','"+vehicle.getClasss()+"','"+vehicle.getModel()+"','"+
-                vehicle.getMake()+"','"+vehicle.getColor()+"','"+vehicle.getOdometer()+"','"
-                +vehicle.getTransmission()+"','"+vehicle.getFuel()+"','"+vehicle.getDrive()+"','"
-                +vehicle.getType()+"','"+vehicle.getWin()+"','"+vehicle.getNumberplate()+"','"+vehicle.getStatus()+"')";
-      
-   
+        String qry="INSERT INTO vehicle (class,model,make,color,odometer,transmission,fuel,drive,plateNumber,status)VALUES('"+
+                vehicle.getClass_()+"','"+vehicle.getModel()+"','"+vehicle.getMake()+"','"+vehicle.getColor()+"','"+vehicle.getOdometer()+
+                "','"+vehicle.getTransmission()+"','"+vehicle.getFuel()+"','"+vehicle.getDrive()+"','"+vehicle.getPlateNumber()+"','"
+                +vehicle.getStatus()+"')";
         
         String msg;
         
@@ -254,7 +246,6 @@ public List<Vehicle> retrieveAllVehicle(){
         }catch(Exception e){
             e.printStackTrace();
             msg="failed";
-         
         }
      return msg;
     }

@@ -77,14 +77,10 @@ and open the template in the editor.
 							<li><input id="Login" type="button" value="Login" /></li>
 							<li><input id="AllUser" type="button" value="List All Users" /></li>
 							<li><input id="SearchUser" type="button" value="User Search" /></li>
-							<li><input id="InsertUser" type="button"
-								value="Insert the User" /></li>
-							<li><input id="VehicleInfo" type="button"
-								value="Vehicle Information" /></li>
-							<li><input id="AllVehicle" type="button"
-								value="List All Vehicles" /></li>
-							<li><input id="InsertVehicle" type="button"
-								value="Insert the Vehicle" /></li>
+							<li><input id="InsertUser" type="button" value="Insert the User" /></li>
+							<li><input id="VehicleInfo" type="button" value="Vehicle Information" /></li>
+							<li><input id="AllVehicle" type="button" value="List All Vehicles" /></li>
+							<li><input id="InsertVehicle" type="button" value="Insert the Vehicle" /></li>
 							<li><input id="Logout" type="button" value="Logout" /></li>
 							<li><input id="About" type="button" value="About Us" /></li>
 						</ul>
@@ -99,24 +95,22 @@ and open the template in the editor.
 							<legend>LogIn</legend>
 
 							<p>
-								<label for="userID">UserName:</label> <input id="userID"
-									type="text" name="userID" />
+								<label for="userID">UserName:</label> 
+								<input id="userID" type="text" name="userID" />
 							</p>
 							<p>
-								<label for="password">Password:</label> <input id="password"
-									type="text" name="password" />
+								<label for="password">Password:</label> <input id="password" type="text" name="password" />
 							</p>
+							
 							<p>
 								<input id="LoginBt" type="button" value="Submit" />
-								&nbsp;&nbsp;&nbsp;&nbsp; <input id="LoginCancelBt" type="button"
-									value="Cancel" />
+								&nbsp;&nbsp;&nbsp;&nbsp; 
+								<input id="LoginCancelBt" type="button" value="Cancel" />
 							</p>
-
 
 							<br />
 							<p>
 								To Register Click<a href="#" id="Register"> Here</a>
-
 							</p>
 
 						</fieldset>
@@ -175,13 +169,9 @@ and open the template in the editor.
 					<fieldset>
 						<legend>All User Information</legend>
 
-
 						<table class="bordered">
 							<thead>
 								<tr>
-
-
-
 									<td><b>userID</b></td>
 									<td><b>Password</b></td>
 									<td><b>First Name</b></td>
@@ -198,6 +188,7 @@ and open the template in the editor.
 									<td><b>Role</b></td>
 								</tr>
 							</thead>
+							
 							<tbody id="ajaxResponse">
 							</tbody>
 						</table>
@@ -205,6 +196,7 @@ and open the template in the editor.
 
 					</fieldset>
 				</div>
+				
 				<div id="SearchUserDiv" class="form-style-2" hidden="true">
 					<form id="myAjaxRequestForm">
 						<fieldset>
@@ -274,12 +266,11 @@ and open the template in the editor.
 					<fieldset>
 						<legend>All Vehicle Information</legend>
 
-
 						<table class="bordered">
 							<thead>
 								<tr>
-
-									<td><b>Name</b></td>
+									
+									<td><b>ID</b></td>
 									<td><b>Class</b></td>
 									<td><b>Model</b></td>
 									<td><b>Make</b></td>
@@ -288,9 +279,7 @@ and open the template in the editor.
 									<td><b>Transmission</b></td>
 									<td><b>Fuel</b></td>
 									<td><b>Drive</b></td>
-									<td><b>Type</b></td>
-									<td><b>WIN</b></td>
-									<td><b>NumberPlate</b></td>
+									<td><b>PlateNumber</b></td>
 									<td><b>Status</b></td>
 
 								</tr>
@@ -298,7 +287,6 @@ and open the template in the editor.
 							<tbody id="ajaxAllVehicleResponse">
 							</tbody>
 						</table>
-
 
 					</fieldset>
 				</div>
@@ -311,31 +299,36 @@ and open the template in the editor.
 
 							<table>
 								<tr>
-									<td><label for="vehiclename">Name:</label> <input
-										id="vehiclename" type="text" name="vehiclename" /> <label
-										for="classs">Class:</label> <input id="classs" type="text"
-										name="classs" /> <label for="model">Model:</label> <input
-										id="model" type="text" name="model" /> <label for="make">Make:</label>
-										<input id="make" type="text" name="make" /> <label
-										for="color">Color:</label> <input id="color" type="text"
-										name="color" /> <label for="odometer">Odometer:</label> <input
-										id="odometer" type="text" name="odometer" /> <label
-										for="transmission">Transmission:</label> <input
-										id="transmission" type="text" name="transmission" /> <label
-										for="fuel">Fuel:</label> <input id="fuel" type="text"
-										name="fuel" /></td>
-									<td><label for="drive">Drive:</label> <input id="drive"
-										type="text" name="drive" /> <label for="type">Type:</label> <input
-										id="type" type="text" name="type" /> <label for="win">WIN:</label>
-										<input id="win" type="text" name="win" /> <label
-										for="numberplate">Number Plate:</label> <input
-										id="numberplate" type="text" name="numberplate" /> <label
-										for="status">Status:</label> <input id="status" type="text"
-										name="status" />
+									<td>									
+									<label for="class_">Class:</label>
+									<input id="InsertVehicleclass_" type="text" name="class_" /> 
+									<label for="model">Model:</label> 
+									<input id="InsertVehiclemodel" type="text" name="model" /> 
+									<label for="make">Make:</label>
+									<input id="InsertVehiclemake" type="text" name="make" /> 
+									<label for="color">Color:</label>
+									<input id="InsertVehiclecolor" type="text" name="color" /> 
+									<label for="odometer">Odometer:</label> 
+									<input id="InsertVehicleodometer" type="text" name="odometer" /> 
+									<label for="transmission">Transmission:</label> 
+									<input id="InsertVehicletransmission" type="text" name="transmission" /> 
+									</td>
+									
+									<td>
+									<label for="fuel">Fuel:</label> 
+									<input id="InsertVehiclefuel" type="text" name="fuel" />
+									<label for="drive">Drive:</label> 
+									<input id="InsertVehicledrive" type="text" name="drive" /> 
+									<label for="plateNumber">Plate Number:</label> 
+									<input id="InsertVehicleplateNumber" type="text" name="plateNumber" /> 
+									<label for="status">Status:</label> 
+									<input id="InsertVehiclestatus" type="text" name="status" />
 
-										<p>
-											<input id="InsertVehicleBt" type="button" value="Submit" />
-										</p></td>
+									<p>
+										<input id="InsertVehicleBtn" type="button" value="Submit" />
+									</p>
+									</td>
+									
 								</tr>
 							</table>
 						</fieldset>

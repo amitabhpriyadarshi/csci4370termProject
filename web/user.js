@@ -63,6 +63,7 @@ $(document).ready(
 				$("#AboutDiv").hide();
 				$("#RegisterDiv").hide();
 				$("#HomeDiv").hide();
+				
 				$("#ajaxResponse").html("");
 				var listTableBody = $("#ajaxResponse");
 				listTableBody.empty();
