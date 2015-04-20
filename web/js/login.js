@@ -81,6 +81,8 @@ $(document).ready(
 				$("#HomeDiv").hide();
 				$("#AboutDiv").hide();
 				$("#RegisterDiv").hide();
+				$("#AllRentalsDiv").hide();
+				$("#InsertRentalDiv").hide();
 			});
 			
 			$("#LoginCancelBtn").click(function(e) {
@@ -96,6 +98,8 @@ $(document).ready(
 				$("#HomeDiv").hide();
 				$("#AboutDiv").hide();
 				$("#RegisterDiv").hide();
+				$("#AllRentalsDiv").hide();
+				$("#InsertRentalDiv").hide();
 			});
 
 			$("#LoginBtn").click(function(e) {
@@ -104,6 +108,7 @@ $(document).ready(
 				$("#InsertUserDiv").hide();
 				$("#AllUserDiv").hide();
 				alert("logging in...");
+				
 
 			});
 

@@ -102,7 +102,9 @@ $(document).ready(
 				$("#LoginDiv").hide();
 				$("#InsertVehicleDiv").hide();
 				$("#AboutDiv").hide();
-
+				$("#AllRentalsDiv").hide();
+				$("#InsertRentalDiv").hide();
+				
 			});
 
 		});

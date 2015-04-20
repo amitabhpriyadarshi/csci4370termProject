@@ -1,6 +1,6 @@
 package model;
 
-public class vehicleClass {
+public class VehicleClass {
 
 	String class_;
 	String cost;

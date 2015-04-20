@@ -33,6 +33,9 @@ and open the template in the editor.
 <script type="text/javascript" src="js/login.js"></script>
 <script type="text/javascript" src="js/insertvehicle.js"></script>
 <script type="text/javascript" src="js/about.js"></script>
+<!-- INSERT RENT MODULE -->
+<script type="text/javascript" src="rent.js"></script>
+<script type="text/javascript" src="insertRent.js"></script>
 </head>
 
 <body id="body" background="image/Backgroundproj.jpg">
@@ -81,6 +84,8 @@ and open the template in the editor.
 							<li><input id="VehicleInfo" type="button" value="Vehicle Information" /></li>
 							<li><input id="AllVehicle" type="button" value="List All Vehicles" /></li>
 							<li><input id="InsertVehicle" type="button" value="Insert the Vehicle" /></li>
+							<li><input id="AllRentals" type="button" value="List All Rentals"/></li>
+							<li><input id="InsertRental" type="button" value="Rent a Car" /></li>
 							<li><input id="Logout" type="button" value="Logout" /></li>
 							<li><input id="About" type="button" value="About Us" /></li>
 						</ul>
@@ -608,6 +613,7 @@ and open the template in the editor.
 						<br />
 						<br />
 					</h5>
+					
 					<div id="wrapper">
 						<div id="bg"></div>
 						<div id="carousel">
@@ -720,9 +726,6 @@ and open the template in the editor.
 
 				</div>
 
-
-
-
 				<div id="AboutDiv" class="form-style-2" hidden="true">
 					<h4>About Us.</h4>
 					<table>
@@ -758,6 +761,88 @@ and open the template in the editor.
 					</table>
 				</div>
 
+				<!-- SHOW ALL RENTALS DIV -->
+				<div id="AllRentalsDiv" class="form-style-2" hidden="true">
+					<fieldset>
+						<legend>All Rentals</legend>
+                    	
+                    	<table class="bordered">
+                    		<thead>
+                    			<tr>
+                    				<td><b>ID</b></td>
+                    				<td><b>PickDate</b></td>
+                    				<td><b>ReturnDate</b></td>
+                    				<td><b>TotalRent</b></td>
+                    				<td><b>Tax</b></td>
+                    				<td><b>ConfirmationNo</b></td>
+                    				<td><b>UserID</b></td>
+                    				<td><b>Class</b></td>
+                    				<td><b>PickupLocID</b></td>
+                    				<td><b>ReturnLocID</b></td>
+                    				<td><b>GPS</b></td>
+                    				<td><b>Waiver</b></td>
+                    				<td><b>Ins.</b></td>
+                    				<td><b>Assist</b></td>
+                    				<td><b>Protection</b></td>
+                    			</tr>
+                    		</thead>
+                    		<tbody id="getAllRentals">
+                    		</tbody>
+                    	</table>
+                    </fieldset>
+				</div>
+				
+				<!-- RENT A CAR DIV -->
+				<div id="InsertRentalDiv" class="form-style-2" hidden="true">
+					<form id="RentalCarRequestForm">
+						<fieldset>
+							<legend>Rent a Car</legend>
+
+							<table>
+								<tr>
+									<td>
+									<label for="vehicleClass">Choose a class:</label>					
+									<select id="vehicleInfo">
+										<!-- Info for the car classes -->
+									</select>
+									<br/>
+									<br/>
+									<label for="RentCarPickDate">Pick Up Date:</label>
+									<input id="RentCarPickDate" type="text" />
+									<label for="RentCarReturnDate">Return Date:</label>			
+									<input id="RentCarReturnDate" type="text" />
+									<label for="">Choose pick-up Location:</label>
+									<select id="RentCarPickUpLoc">
+										<!-- Pick-up location info -->
+									</select>
+									<label for="">Choose return location:</label>
+									<select id="RentCarReturnLoc">
+										<!-- Return location info -->
+									</select>
+									<br/>
+									<p>GPS: <input id="RentCarGps" type="checkbox" /></p>
+									<p>Damage Waiver: <input id="RentCarDamageWaiver" type="checkbox" /></p>
+									<p>Insurance: <input id="RentCarInsurance" type="checkbox" /></p>		
+									<p>Roadside Assistance: <input id="RentCarRoadsideAssistance" type="checkbox" /></p>
+									<p>Liability Protection: <input id="RentCarLiabilityProtection" type="checkbox" /></p>		
+									</td>
+									
+									<td>
+									<p id="RentCarCostPerDay"></p>
+									<p id="RentCarSubTotal">SubTotal: $0.00</p>
+									<p id="RentCarTax">Tax: $0.00</p>
+									<p id="RentCarTotal">Total: $0.00</p>
+									<p>
+										<input id="RentCarBtn" type="button" value="Submit" />
+									</p>
+									</td>
+									
+								</tr>
+							</table>
+						</fieldset>
+					</form>
+				</div>
+				
 			</td>
 		</tr>
 	</table>

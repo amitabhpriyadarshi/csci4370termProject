@@ -9,11 +9,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
 import java.util.ArrayList;
 import java.util.List;
-import model.User;
-import model.Vehicle;
+
+import model.*;
 import util.Util;
 
 /**
@@ -192,7 +191,7 @@ public class Dao {
      return msg;
     }
     
-public List<Vehicle> retrieveAllVehicle(){
+    public List<Vehicle> retrieveAllVehicle(){
         Vehicle vehicle=null;
         PreparedStatement ps=null;
         ResultSet rs=null;
@@ -249,5 +248,119 @@ public List<Vehicle> retrieveAllVehicle(){
             msg="failed";
         }
      return msg;
+    }
+    
+    public List<Rent> retrieveAllRentals(){
+    	Rent rental = null;
+        PreparedStatement ps=null;
+        ResultSet rs=null;
+        String qry="select * from rent";
+        List<Rent> rentalList = new ArrayList();
+        try{
+            ps=con.prepareStatement(qry);
+            rs=ps.executeQuery();
+            while(rs.next()){
+                rental=new Rent();
+                
+                rental.setId(rs.getString("id"));
+                rental.setPickDate(rs.getString("pickDate"));
+                rental.setReturnDate(rs.getString("returnDate"));
+                rental.setTotalRent(rs.getString("totalRent"));
+                rental.setTax(rs.getString("tax"));
+                rental.setConfirmationNo(rs.getString("confirmationNo"));
+                rental.setUserID(rs.getString("userID"));
+                rental.setClass_(rs.getString("class"));
+                rental.setPickupLocID(rs.getString("pickupLocID"));
+                rental.setReturnLocID(rs.getString("returnLocID"));
+                rental.setGps(rs.getString("gps"));
+                rental.setDamageWaiver(rs.getString("damageWaiver"));
+                rental.setInsurance(rs.getString("insurance"));
+                rental.setRoadsideAssistance(rs.getString("roadsideAssistance"));
+                rental.setLiabilityProtection(rs.getString("liabilityProtection"));
+                
+                rentalList.add(rental);
+            }
+            ps.close();            
+        }catch(Exception e){
+            e.printStackTrace();
+            rental=null;
+        }
+     return rentalList;
+    }
+    
+    public String insertRent(Rent rental){
+        
+        PreparedStatement ps=null;
+        ResultSet rs=null;
+        
+        String qry="";
+        
+        String msg;
+        
+        try{
+            ps=con.prepareStatement(qry);
+            ps.execute();
+            ps.close();       
+            msg="success";
+        }catch(Exception e){
+            e.printStackTrace();
+            msg="failed";
+        }
+     return msg;
+    }
+    
+    public List<VehicleClass> retrieveAllVehicleClass(){
+    	VehicleClass vehicleClass=null;
+        PreparedStatement ps=null;
+        ResultSet rs=null;
+        String qry="select * from vehicleClass";
+        List<VehicleClass> vehicleClassList = new ArrayList();
+        try{
+            ps=con.prepareStatement(qry);
+            rs=ps.executeQuery();
+            while(rs.next()){
+            	vehicleClass=new VehicleClass();
+                
+                vehicleClass.setClass_(rs.getString("class"));
+                vehicleClass.setCost(rs.getString("cost"));
+                vehicleClass.setFeatures(rs.getString("features"));
+                
+                vehicleClassList.add(vehicleClass);
+            }
+            ps.close();            
+        }catch(Exception e){
+            e.printStackTrace();
+            vehicleClass=null;
+        }
+     return vehicleClassList;
+    }
+    
+    public List<Address> retrieveAllAddress(){
+    	Address address=null;
+        PreparedStatement ps=null;
+        ResultSet rs=null;
+        String qry="select * from address";
+        List<Address> addressList = new ArrayList();
+        try{
+            ps=con.prepareStatement(qry);
+            rs=ps.executeQuery();
+            while(rs.next()){
+            	address=new Address();
+                
+            	address.setId(rs.getString("id"));
+            	address.setStreet(rs.getString("street"));
+            	address.setCity(rs.getString("city"));
+            	address.setState(rs.getString("state"));
+            	address.setCountry(rs.getString("country"));
+            	address.setZip(rs.getString("zip"));
+                
+            	addressList.add(address);
+            }
+            ps.close();            
+        }catch(Exception e){
+            e.printStackTrace();
+            address=null;
+        }
+     return addressList;
     }
 }

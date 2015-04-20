@@ -19,7 +19,7 @@ public class Rent {
 	String gps;
 	String damageWaiver;
 	String insurance;
-	String roadsideAssistence;
+	String roadsideAssistance;
 	String liabilityProtection;
 	
 	public String getId() {
@@ -100,11 +100,11 @@ public class Rent {
 	public void setInsurance(String insurance) {
 		this.insurance = insurance;
 	}
-	public String getRoadsideAssistence() {
-		return roadsideAssistence;
+	public String getRoadsideAssistance() {
+		return roadsideAssistance;
 	}
-	public void setRoadsideAssistence(String roadsideAssistence) {
-		this.roadsideAssistence = roadsideAssistence;
+	public void setRoadsideAssistance(String roadsideAssistance) {
+		this.roadsideAssistance = roadsideAssistance;
 	}
 	public String getLiabilityProtection() {
 		return liabilityProtection;

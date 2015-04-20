@@ -38,6 +38,7 @@ $(document).ready(
 					}
 				});
 			}
+			
 			function createDataList(JsonObject) {
 				userArray.length = 0;
 				$.each(JsonObject, function(key, object) {
@@ -50,7 +51,9 @@ $(document).ready(
 				});
 
 			}
+			
 			loadInitData();
+			
 			$("#AllUser").click(function(e) {
 
 				$("#AllUserDiv").show();
@@ -63,6 +66,8 @@ $(document).ready(
 				$("#AboutDiv").hide();
 				$("#RegisterDiv").hide();
 				$("#HomeDiv").hide();
+				$("#AllRentalsDiv").hide();
+				$("#InsertRentalDiv").hide();
 				
 				$("#ajaxResponse").html("");
 				var listTableBody = $("#ajaxResponse");

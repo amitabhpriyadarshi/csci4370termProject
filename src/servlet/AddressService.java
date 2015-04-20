@@ -5,9 +5,7 @@
 */
 package servlet;
 
-import model.Rent;
-import model.User;
-import model.VehicleClass;
+import model.Address;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -31,8 +29,8 @@ import java.util.List;
  *
  * @author amitabh + derek
  */
-@WebServlet(name = "InsertRentService", urlPatterns = {"/InsertRentService"})
-public class InsertRentService extends HttpServlet {
+@WebServlet(name = "AddressService", urlPatterns = {"/AddressService"})
+public class AddressService extends HttpServlet {
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -42,10 +40,10 @@ public class InsertRentService extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet InsertRentService</title>");
+            out.println("<title>Servlet AddressService</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet InsertRentService at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet AddressService at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -57,8 +55,8 @@ public class InsertRentService extends HttpServlet {
     	PrintWriter out = response.getWriter();
     	
     	Dao dao = new Dao();
-    	List<VehicleClass> vehicleClassList = dao.retrieveAllVehicleClass();
-    	String res = toJSONString(vehicleClassList);
+    	List<Address> addressList = dao.retrieveAllAddress();
+    	String res = toJSONString(addressList);
     	out.println(res);
     	out.close();
 
@@ -68,30 +66,7 @@ public class InsertRentService extends HttpServlet {
 	@Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    	PrintWriter out = response.getWriter();
-    	
-    	Rent rental = new Rent();
-    	rental.setPickDate(request.getParameter("pickDate"));
-    	rental.setReturnDate(request.getParameter("returnDate"));
-    	rental.setTotalRent(request.getParameter("totalRent"));
-    	rental.setTax(request.getParameter("tax"));
-    	rental.setConfirmationNo(request.getParameter("confirmationNo"));
-    	rental.setUserID(request.getParameter("userID"));
-    	rental.setClass_(request.getParameter("class_"));
-    	rental.setPickupLocID(request.getParameter("pickupLocID"));
-    	rental.setReturnLocID(request.getParameter("returnLocID"));
-    	rental.setGps(request.getParameter("gps"));
-    	rental.setDamageWaiver(request.getParameter("damageWaiver"));
-    	rental.setInsurance(request.getParameter("insurance"));
-    	rental.setRoadsideAssistance(request.getParameter("roadsideAssistance"));
-    	rental.setLiabilityProtection(request.getParameter("liabilityProtection"));
 
-       Dao dao=new Dao();
-       String msg = dao.insertRent(rental);
-       String res = toJSONString(msg);
-       out.println(res);
-        
-        out.close();
     }
     public String toJSONString(Object object) {
         GsonBuilder gsonBuilder = new GsonBuilder();
@@ -100,12 +75,12 @@ public class InsertRentService extends HttpServlet {
         return gson.toJson(object);
     }
     
-    public Rent fromJSON(String string) {
+    public Address fromJSON(String string) {
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.setDateFormat("yyy-MM-dd'T'HH:mm:ss.SSS'Z'"); 								// UTC
         Gson gson = gsonBuilder.create();
         
-        return gson.fromJson(string,Rent.class);
+        return gson.fromJson(string,Address.class);
         
     }
     

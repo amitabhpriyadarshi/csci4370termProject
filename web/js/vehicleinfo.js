@@ -18,6 +18,8 @@ $(document).ready(function() {
 		$("#HomeDiv").hide();
 		$("#RegisterDiv").hide();
 		$("#AboutDiv").hide();
+		$("#AllRentalsDiv").hide();
+		$("#InsertRentalDiv").hide();
 	});
 
 });

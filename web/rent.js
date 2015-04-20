@@ -10,18 +10,24 @@ $(function() {
 
 	var allRentals = new Array();
 
-	function Rent(id, pickupdate, returnDate, totalRent, tax, confirmationNo,
-			user_id, vehicle_id, pickuploc_id, returnloc_id) {
+	function Rent(id, pickDate, returnDate, totalRent, tax, confirmationNo,
+			userID, class_, pickupLocID, returnLocID, gps, damageWaiver,
+			insurance, roadsideAssistance, liabilityProtection) {
 		this.id = id;
-		this.pickupdate = pickupdate;
+		this.pickDate = pickDate;
 		this.returnDate = returnDate;
 		this.totalRent = totalRent;
 		this.tax = tax;
 		this.confirmationNo = confirmationNo;
-		this.user_id = user_id;
-		this.vehicle_id = vehicle_id;
-		this.pickuploc_id = pickuploc_id;
-		this.returnloc_id = returnloc_id;
+		this.userID = userID
+		this.class_ = class_;
+		this.pickupLocID = pickupLocID;
+		this.returnLocID = returnLocID;
+		this.gps = gps;
+		this.damageWaiver = damageWaiver;
+		this.insurance = insurance;
+		this.roadsideAssistance = roadsideAssistance;
+		this.liabilityProtection = liabilityProtection;
 	}
 
 	function loadInitData() {
@@ -35,7 +41,7 @@ $(function() {
 			cache : false,
 			success : function(data, textStatus, xhr) {
 				createDataList(data);
-				
+
 				$("#getAllRentals").html("");
 
 				var listTableBody = $("#getAllRentals");
@@ -45,26 +51,36 @@ $(function() {
 
 					var row = $("<tr></tr>");
 					var id = $("<td>" + rent.id + "</td>");
-					var pickupdate = $("<td>" + rent.pickupdate + "</td>");
-					var returndate = $("<td>" + rent.returnDate + "</td>");
+					var pickDate = $("<td>" + rent.pickDate + "</td>");
+					var returnDate = $("<td>" + rent.returnDate + "</td>");
 					var totalRent = $("<td>" + rent.totalRent + "</td>");
 					var tax = $("<td>" + rent.tax + "</td>");
 					var confirmationNo = $("<td>" + rent.confirmationNo + "</td>");
-					var user_id = $("<td>" + rent.user_id + "</td>");
-					var vehicle_id = $("<td>" + rent.vehicle_id + "</td>");
-					var pickuploc_id = $("<td>" + rent.pickuploc_id + "</td>");
-					var returnloc_id = $("<td>" + rent.returnloc_id + "</td>");
+					var userID = $("<td>" + rent.userID + "</td>");
+					var class_ = $("<td>" + rent.class_ + "</td>");
+					var pickupLocID = $("<td>" + rent.pickupLocID + "</td>");
+					var returnLocID = $("<td>" + rent.returnLocID + "</td>");
+					var gps = $("<td>" + rent.gps + "</td>");
+					var damageWaiver = $("<td>" + rent.damageWaiver + "</td>");
+					var insurance = $("<td>" + rent.insurance + "</td>");
+					var roadsideAssistance = $("<td>" + rent.roadsideAssistance + "</td>");
+					var liabilityProtection = $("<td>" + rent.liabilityProtection + "</td>");
 
 					id.appendTo(row);
-					pickupdate.appendTo(row);
-					returndate.appendTo(row);
+					pickDate.appendTo(row);
+					returnDate.appendTo(row);
 					totalRent.appendTo(row);
 					tax.appendTo(row);
 					confirmationNo.appendTo(row);
-					user_id.appendTo(row);
-					vehicle_id.appendTo(row);
-					pickuploc_id.appendTo(row);
-					returnloc_id.appendTo(row);
+					userID.appendTo(row);
+					class_.appendTo(row);
+					pickupLocID.appendTo(row);
+					returnLocID.appendTo(row);
+					gps.appendTo(row);
+					damageWaiver.appendTo(row);
+					insurance.appendTo(row);
+					roadsideAssistance.appendTo(row);
+					liabilityProtection.appendTo(row);
 
 					row.appendTo(listTableBody);
 
@@ -80,25 +96,31 @@ $(function() {
 	function createDataList(JsonObject) {
 		allRentals.length = 0;
 		$.each(JsonObject, function(key, object) {
-			console.log(object);
-			var rental = new Rent(object.id, object.pickdate,
+			//console.log(object);
+			var rental = new Rent(object.id, object.pickDate,
 					object.returnDate, object.totalRent, object.tax,
-					object.confirmationNo, object.user_id, object.vehicle_id,
-					object.pickuploc_id, object.returnloc_id);
+					object.confirmationNo, object.userID, object.class_,
+					object.pickupLocID, object.returnLocID, object.gps,
+					object.damageWaiver, object.insurance,
+					object.roadsideAssistance, object.liabilityProtection);
 			allRentals.push(rental);
 		});
 	}
 
-	$("#AllRent").on('click', function() {
-		/*
-		 * Show hide whatever divs
-		 */
+	$("#AllRentals").on('click', function() {
+		$("#AboutDiv").hide();
+		$("#RegisterDiv").hide();
+		$("#HomeDiv").hide();
 		$("#AllUserDiv").hide();
 		$("#SearchUserDiv").hide();
 		$("#InsertUserDiv").hide();
-		$("#InsertRentalsDiv").hide();
+		$("#VehicleInfoDiv").hide();
+		$("#LoginDiv").hide();
+		$("#InsertVehicleDiv").hide();
+		$("#AllVehicleDiv").hide();
 		$("#AllRentalsDiv").show();
-		
+		$("#InsertRentalDiv").hide();
+
 		loadInitData();
 	})
 });

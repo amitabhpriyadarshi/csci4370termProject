@@ -12,7 +12,8 @@ $(document).ready(
 				$("#VehicleInfoDiv").hide();
 				$("#HomeDiv").hide();
 				$("#AboutDiv").hide();
-
+				$("#AllRentalsDiv").hide();
+				$("#InsertRentalDiv").hide();
 			});
 
 			function User(userID, password, firstName, lastName, dob, street,
@@ -93,6 +94,7 @@ $(document).ready(
 				$("#HomeDiv").hide();
 				$("#VehicleInfoDiv").hide();
 				$("#AboutDiv").hide();
+				$("#InsertRentalDiv").hide();
 			});
 			
 			$("#RegisterCancelBtn").click(function(e) {
@@ -104,6 +106,7 @@ $(document).ready(
 				$("#HomeDiv").hide();
 				$("#VehicleInfoDiv").hide();
 				$("#AboutDiv").hide();
+				$("#InsertRentalDiv").hide();
 			});
 
 		});

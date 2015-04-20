@@ -4,20 +4,20 @@
  * and open the template in the editor.
  */
 
-
 $(document).ready(function() {
- 
-$("#About").click(function(e){
-         $("#AboutDiv").show();
-          $("#RegisterDiv").hide();  
-            $("#HomeDiv").hide();    
-        $("#AllUserDiv").hide();	
-        $("#SearchUserDiv").hide();
-        $("#InsertUserDiv").hide();           
-      $("#VehicleInfoDiv").hide(); 
-      $("#LoginDiv").hide(); 
-      $("#InsertVehicleDiv").hide(); 
-           $("#AllVehicleDiv").hide(); 
 
-            });
+	$("#About").click(function(e) {
+		$("#AboutDiv").show();
+		$("#RegisterDiv").hide();
+		$("#HomeDiv").hide();
+		$("#AllUserDiv").hide();
+		$("#SearchUserDiv").hide();
+		$("#InsertUserDiv").hide();
+		$("#VehicleInfoDiv").hide();
+		$("#LoginDiv").hide();
+		$("#InsertVehicleDiv").hide();
+		$("#AllVehicleDiv").hide();
+		$("#AllRentalsDiv").hide();
+		$("#InsertRentalDiv").hide();
+	});
 });

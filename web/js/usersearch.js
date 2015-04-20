@@ -77,6 +77,7 @@ $(document).ready(
 					}
 				});
 			}
+			
 			function createSearchDataList(JsonObject) {
 				userSearchArray.length = 0;
 				$.each(JsonObject, function(key, object) {
@@ -103,6 +104,8 @@ $(document).ready(
 				$("#HomeDiv").hide();
 				$("#AboutDiv").hide();
 				$("#RegisterDiv").hide();
+				$("#AllRentalsDiv").hide();
+				$("#InsertRentalDiv").hide();
 			});
 			$("#SearchUserBt").click(function(e) {
 				loadSearchData();
@@ -115,7 +118,7 @@ $(document).ready(
 				$("#RegisterDiv").hide();
 				$("#AboutDiv").hide();
 				$("#ajaxResponse").html("");
-				
+				$("#AllRentalsDiv").hide();
 			});
 
 		});

@@ -79,6 +79,8 @@ $(document).ready(
 				$("#HomeDiv").hide();
 				$("#AboutDiv").hide();
 				$("#RegisterDiv").hide();
+				$("#AllRentalsDiv").hide();
+				$("#InsertRentalDiv").hide();
 			});
 
 			$("#InsertUserBtn").click(function() {

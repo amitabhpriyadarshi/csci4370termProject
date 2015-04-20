@@ -74,6 +74,8 @@ $(document).ready(
 				$("#HomeDiv").hide();
 				$("#AboutDiv").hide();
 				$("#RegisterDiv").hide();
+				$("#AllRentalsDiv").hide();
+				$("#InsertRentalDiv").hide();
 			});
 
 			$("#InsertVehicleBtn").click(function(e) {
