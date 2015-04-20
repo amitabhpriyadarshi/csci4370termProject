@@ -22,17 +22,17 @@ and open the template in the editor.
 <script src="Scripts/jquery.ui.datepicker.js" type="text/javascript"></script>
 <script src="Scripts/jquerycarou.js" type="text/javascript"></script>
 
-<script type="text/javascript" src="homeanim.js"></script>
-<script type="text/javascript" src="home.js"></script>
-<script type="text/javascript" src="vehicle.js"></script>
-<script type="text/javascript" src="user.js"></script>
-<script type="text/javascript" src="usersearch.js"></script>
-<script type="text/javascript" src="insertuser.js"></script>
-<script type="text/javascript" src="vehicleinfo.js"></script>
-<script type="text/javascript" src="register.js"></script>
-<script type="text/javascript" src="login.js"></script>
-<script type="text/javascript" src="insertvehicle.js"></script>
-<script type="text/javascript" src="about.js"></script>
+<script type="text/javascript" src="js/homeanim.js"></script>
+<script type="text/javascript" src="js/home.js"></script>
+<script type="text/javascript" src="js/vehicle.js"></script>
+<script type="text/javascript" src="js/user.js"></script>
+<script type="text/javascript" src="js/usersearch.js"></script>
+<script type="text/javascript" src="js/insertuser.js"></script>
+<script type="text/javascript" src="js/vehicleinfo.js"></script>
+<script type="text/javascript" src="js/register.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
+<script type="text/javascript" src="js/insertvehicle.js"></script>
+<script type="text/javascript" src="js/about.js"></script>
 </head>
 
 <body id="body" background="image/Backgroundproj.jpg">
@@ -96,16 +96,17 @@ and open the template in the editor.
 
 							<p>
 								<label for="userID">UserName:</label> 
-								<input id="userID" type="text" name="userID" />
+								<input id="LoginuserID" type="text" name="userID" />
 							</p>
 							<p>
-								<label for="password">Password:</label> <input id="password" type="text" name="password" />
+								<label for="password">Password:</label> 
+								<input id="Loginpassword" type="password" name="password" />
 							</p>
 							
 							<p>
-								<input id="LoginBt" type="button" value="Submit" />
+								<input id="LoginBtn" type="button" value="Submit" />
 								&nbsp;&nbsp;&nbsp;&nbsp; 
-								<input id="LoginCancelBt" type="button" value="Cancel" />
+								<input id="LoginCancelBtn" type="button" value="Cancel" />
 							</p>
 
 							<br />
@@ -115,7 +116,6 @@ and open the template in the editor.
 
 						</fieldset>
 					</form>
-
 				</div>
 
 				<div id="RegisterDiv" class="form-style-2" hidden="true">
@@ -125,45 +125,49 @@ and open the template in the editor.
 
 							<table>
 								<tr>
-									<td><label for="reg_userID">UserID:</label> <input
-										id="reg_userID" type="text" name="reg_userID" /> <label
-										for="reg_name">Name:</label> <input id="reg_name" type="text"
-										name="reg_name2" /> <label for="reg_phone">Phone:</label> <input
-										id="reg_phone" type="text" name="reg_phone" /> <label
-										for="reg_dob">DOB:</label> <input id="reg_dob" type="text"
-										name="reg_dob" /> <label for="reg_email">Email:</label> <input
-										id="reg_email" type="text" name="reg_email" /> <label
-										for="reg_dlNumber">DL Number:</label> <input id="reg_dlNumber"
-										type="text" name="reg_dlNumber" /> <label for="reg_expDate">Expiration
-											Date:</label> <input id="reg_expDate" type="text" name="reg_expDate" />
-										<label for="reg_issueDate">Issue Date:</label> <input
-										id="reg_issueDate" type="text" name="reg_issueDate" /></td>
-									<td><label for="reg_password">Password:</label> <input
-										id="reg_password" type="text" name="reg_password" /> <label
-										for="reg_street">Street:</label> <input id="reg_street"
-										type="text" name="reg_street" /> <label for="reg_apartmentNo">Apartment
-											No:</label> <input id="reg_apartmentNo" type="text"
-										name="reg_apartmentNo" /> <label for="reg_city">City:</label>
-										<input id="reg_city" type="text" name="reg_city" /> <label
-										for="reg_state">State:</label> <input id="reg_state"
-										type="text" name="reg_state" /> <label for="reg_zip">Zip:</label>
-										<input id="reg_zip" type="text" name="reg_zip" /> <label
-										for="reg_role">Role:</label> <input id="reg_role" type="text"
-										name="reg_role" />
-										<p>
-											<input id="RegisterBt" type="button" value="Register" />
-											&nbsp;&nbsp;&nbsp;&nbsp; <input id="RegisterCancelBt"
-												type="button" value="Cancel" />
-										</p></td>
+									<td>
+									<label for="reg_userID">UserID:</label> 
+									<input id="reg_userID" type="text" name="reg_userID" /> 
+									<label for="reg_firstName">First Name:</label> 
+									<input id="reg_firstName" type="text" name="reg_firstName" /> 
+									<label for="reg_phone">Phone:</label> 
+									<input id="reg_phone" type="text" name="reg_phone" /> 
+									<label for="reg_dob">DOB:</label> 
+									<input id="reg_dob" type="text" name="reg_dob" /> 
+									<label for="reg_email">Email:</label> 
+									<input id="reg_email" type="text" name="reg_email" /> 
+									<label for="reg_dlNumber">DL Number:</label> 
+									<input id="reg_dlNumber" type="text" name="reg_dlNumber" /> 
+									<label for="reg_expDate">Expiration Date:</label> 
+									<input id="reg_expDate" type="text" name="reg_expDate" />
+									</td>
+									
+									<td>
+									<label for="reg_password">Password:</label> 
+									<input id="reg_password" type="text" name="reg_password" />
+									<label for="reg_lastName">Last Name:</label> 
+									<input id="reg_lastName" type="text" name="reg_lastName" />  
+									<label for="reg_street">Street:</label> 
+									<input id="reg_street" type="text" name="reg_street" /> 
+									<label for="reg_city">City:</label>
+									<input id="reg_city" type="text" name="reg_city" /> 
+									<label for="reg_state">State:</label> 
+									<input id="reg_state" type="text" name="reg_state" /> 
+									<label for="reg_zip">Zip:</label>
+									<input id="reg_zip" type="text" name="reg_zip" /> 
+										
+									<p>
+										<input id="RegisterBtn" type="button" value="Register" />
+											&nbsp;&nbsp;&nbsp;&nbsp; 
+										<input id="RegisterCancelBtn" type="button" value="Cancel" />
+										
+									</p>
+									</td>
 								</tr>
 							</table>
 						</fieldset>
 					</form>
-
 				</div>
-
-
-
 
 				<div id="AllUserDiv" class="form-style-2" hidden="true">
 					<fieldset>
@@ -192,8 +196,6 @@ and open the template in the editor.
 							<tbody id="ajaxResponse">
 							</tbody>
 						</table>
-
-
 					</fieldset>
 				</div>
 				
@@ -211,7 +213,6 @@ and open the template in the editor.
 							</p>
 						</fieldset>
 					</form>
-
 				</div>
 
 				<div id="InsertUserDiv" class="form-style-2" hidden="true">
@@ -258,9 +259,7 @@ and open the template in the editor.
 							</table>
 						</fieldset>
 					</form>
-
 				</div>
-
 
 				<div id="AllVehicleDiv" class="form-style-2" hidden="true">
 					<fieldset>
@@ -295,7 +294,6 @@ and open the template in the editor.
 					<form id="InsertVehicleRequestForm">
 						<fieldset>
 							<legend>Insert Vehicle</legend>
-
 
 							<table>
 								<tr>
@@ -333,9 +331,7 @@ and open the template in the editor.
 							</table>
 						</fieldset>
 					</form>
-
 				</div>
-
 
 				<div id="VehicleInfoDiv" class="form-style-2" hidden="true">
 					<fieldset>

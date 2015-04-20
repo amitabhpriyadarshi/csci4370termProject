@@ -169,13 +169,14 @@ public class Dao {
     }
     
     public String registerUser(User usr){
-        
-        System.out.println(usr.getName());
-         System.out.println(usr.getPhone());
+
         PreparedStatement ps=null;
         ResultSet rs=null;
         
-        String qry="INSERT INTO user (userID,name,phone,dob,email,dlNumber,expDate,issueDate,passwd,street,apartmentNo,city,state,zip,role)VALUES('"+usr.getUserID()+"','"+usr.getName()+"','"+usr.getPhone()+"','"+usr.getDob()+"','"+usr.getEmail()+"','"+usr.getDlNumber()+"','"+usr.getExpDate()+"','"+usr.getIssueDate()+"','"+usr.getPassword()+"','"+usr.getStreet()+"','"+usr.getApartmentNo()+"','"+usr.getCity()+"','"+usr.getState()+"','"+usr.getZip()+"','"+usr.getRole()+"')";
+        String qry="INSERT INTO user (userID,password,firstName,lastName,dob,street,phone,email,dlNumber,expDate,city,state,zip,role)"
+        		+ "VALUES('"+usr.getUserID()+"','"+usr.getPassword()+"','"+usr.getFirstName()+"','"+usr.getLastName()+"','"+usr.getDob()+"','"
+        		+usr.getStreet()+"','"+usr.getPhone()+"','"+usr.getEmail()+"','"+usr.getDlNumber()+"','"+usr.getExpDate()+"','"+usr.getCity()+"','"
+        		+usr.getState()+"','"+usr.getZip()+"','"+usr.getRole()+"')";
         String msg;
         System.out.println("m here: insert user fn and qry is:"+qry);
         try{
