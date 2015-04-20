@@ -293,10 +293,14 @@ public class Dao {
         PreparedStatement ps=null;
         ResultSet rs=null;
         
-        String qry="";
+        String qry="INSERT INTO rent (pickDate, returnDate, totalRent, tax, confirmationNo, userID, class, pickupLocID, returnLocID,"
+        		+ "gps, damageWaiver, insurance, roadsideAssistance, liabilityProtection) VALUES ('" + rental.getPickDate() + 
+        		"','" + rental.getReturnDate() + "','" + rental.getTotalRent() + "','" + rental.getTax() + "','" + rental.getConfirmationNo() + 
+        		"','" + rental.getUserID() + "','" + rental.getClass_() + "','" + rental.getPickupLocID() + "','" + rental.getReturnLocID() +
+        		"','" + rental.getGps() + "','" + rental.getDamageWaiver() + "','" + rental.getInsurance() + "','" +
+        		rental.getRoadsideAssistance() + "','" + rental.getLiabilityProtection() + "')";
         
         String msg;
-        
         try{
             ps=con.prepareStatement(qry);
             ps.execute();

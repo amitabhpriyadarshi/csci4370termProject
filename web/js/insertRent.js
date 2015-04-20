@@ -7,7 +7,7 @@ $(function() {
 	/*
 	 * Variables to store calculation results and numbers
 	 */
-	var subTotal, total, days = 0, vehCost, taxRate = 0.07, tax = 0.00;
+	var subTotal = 0.00, total = 0.00, days = 0, vehCost, taxRate = 0.07, taxDisplay = 0.00;
 	/*
 	 * Variables for the luxuries
 	 */
@@ -187,24 +187,22 @@ $(function() {
 		var pickDate = $("#RentCarPickDate").val();
 		var returnDate = $("#RentCarReturnDate").val();
 		var totalRent = total;
-		var tax = tax;
+		var tax = taxDisplay;
 		var confirmationNo = generateConfirmationNo();
 		//TODO: get the actual userID
-		var userID = "chi";
+		var userID = "dchi";
 		var class_ = $("#vehicleInfo :selected").val();
-		var pickupLocID;
-		var returnLocID;
+		var pickupLocID = $("#RentCarPickUpLoc :selected").val();
+		var returnLocID = $("#RentCarReturnLoc :selected").val();
 		var gps = isChecked($("#RentCarGps").is(":checked"));
 		var damageWaiver = isChecked($("#RentCarDamageWaiver").is(":checked"));
 		var insurance = isChecked($("#RentCarInsurance").is(":checked"));
 		var roadsideAssistance = isChecked($("#RentCarRoadsideAssistance").is(":checked"));
 		var liabilityProtection = isChecked($("#RentCarLiabilityProtection").is(":checked"));
-		
+
 		$.ajax({
 			type : "POST",
-			//TODO: UNCOMMENT THE SERVICE
-			//url : "InsertRentService",
-			url: "",
+			url : "InsertRentService",
 			dataType : 'json',
 			data : {
 				pickDate : pickDate,
@@ -300,38 +298,41 @@ $(function() {
 	function calculateLuxuries(){
 		luxuryCost = 0.00;
 		if($("#RentCarGps").is(":checked")){
-			luxuryCost += gpsCost;
+			luxuryCost = luxuryCost +  gpsCost;
 		}
 		if($("#RentCarDamageWaiver").is(":checked")){
-			luxuryCost += damageWaiverCost;
+			luxuryCost = luxuryCost + damageWaiverCost;
 		}
 		if($("#RentCarInsurance").is(":checked")){
-			luxuryCost += insuranceCost;
+			luxuryCost = luxuryCost + insuranceCost;
 		}
 		if($("#RentCarRoadsideAssistance").is(":checked")){
-			luxuryCost += roadsideAssistanceCost;
+			luxuryCost = luxuryCost + roadsideAssistanceCost;
 		}
 		if($("#RentCarLiabilityProtection").is(":checked")){
-			luxuryCost += liabilityProtectionCost;
+			luxuryCost = luxuryCost + liabilityProtectionCost;
 		}	
 		return luxuryCost;
 	}
 	
 	function calculateSubTotal(){
 		subTotal = days * vehCost + calculateLuxuries();
+		subTotal = subTotal.toFixed(2);
 		$("#RentCarSubTotal").text("SubTotal: $" + subTotal);
 		calculateTax();
 		calculateTotal();
 	}
 	
 	function calculateTax(){
-		tax = subTotal * taxRate;
-		$("#RentCarTax").text("Tax: $" + tax.toFixed(2));
+		taxDisplay = subTotal * taxRate;
+		taxDisplay = taxDisplay.toFixed(2);
+		$("#RentCarTax").text("Tax: $" + taxDisplay);
 	}
 	
 	function calculateTotal(){
-		total = tax * subTotal;
-		$("#RentCarTotal").text("Total: $" + total.toFixed(2));
+		total = parseFloat(subTotal) + parseFloat(taxDisplay);
+		total = total.toFixed(2);
+		$("#RentCarTotal").text("Total: $" + total);
 	}
 	
 	$("#InsertRental").on('click', function() {
