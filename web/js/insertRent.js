@@ -16,7 +16,10 @@ $(function() {
 	
 	var vehicleClassList = new Array();
 	var addressList = new Array();
-
+	var addressStateList = new Array();
+	
+	var pickUpLocSelectedState, returnLocSelectedState;
+	
 	$("#myAjaxRequestForm").submit(function(e) {
 		e.preventDefault();
 	});
@@ -104,31 +107,110 @@ $(function() {
 
 				createAddressList(data);
 
-				$("#RentCarPickUpLoc").html("");
-				$("#RentCarReturnLoc").html("");
+				$("#RentCarPickUpLocState").html("");
+				$("#RentCarReturnLocState").html("");
 
-				var RentCarPickUpLocBody = $("#RentCarPickUpLoc");
-				var RentCarReturnLocBody = $("#RentCarReturnLoc");
+				var RentCarPickUpLocBody = $("#RentCarPickUpLocState");
+				var RentCarReturnLocBody = $("#RentCarReturnLocState");
+				
 				RentCarPickUpLocBody.empty();
 				RentCarReturnLocBody.empty();
 
 				for (i = 0; i < addressList.length; i++) {
 					address = addressList[i];
-
-					var id1 = $("<option value=\"" + address.id + "\">"
-							+ address.id + "</option>");
-					var id2 = $("<option value=\"" + address.id + "\">"
-							+ address.id + "</option>");
 					
-					id1.appendTo(RentCarPickUpLocBody);
-					id2.appendTo(RentCarReturnLocBody);
+					//If the state isn't in the arrayList already
+					if(!($.inArray(address.state, addressStateList) > -1)){
+						addressStateList.push(address.state);
+					}
 				}
+				for(i = 0; i < addressStateList.length; i++){
+					addressState = addressStateList[i];
+					
+					var state1 = $("<option value=\"" + addressState + "\">"
+							+ addressState + "</option>");
+					var state2 = $("<option value=\"" + addressState + "\">"
+							+ addressState + "</option>");
+					
+					state1.appendTo(RentCarPickUpLocBody);
+					state2.appendTo(RentCarReturnLocBody);					
+				}
+				pickUpLocSelectedState = addressStateList[0];
+				returnLocSelectedState = addressStateList[0];
+				populateAddressPickUpOptions();
+				populateAddressReturnOptions();
 			},
 			error : function(data, textStatus, errorThrown) {
 				console.log(textStatus);
 			}
 		});
 	}
+
+	function getAddressID(selectedState, selectedAddress){
+		for(i = 0; i < addressList.length; i++){
+			if(addressList[i].state == selectedState){
+				if(addressList[i].street == selectedAddress){
+					return addressList[i].id;
+				}
+			}
+		}
+	}
+	
+	$("#RentCarPickUpLocAddress").html("");
+	$("#RentCarReturnLocAddress").html("");
+	var RentCarPickUpAddressBody = $("#RentCarPickUpLocAddress");
+	var RentCarReturnAddressBody = $("#RentCarReturnLocAddress");
+
+	function populateAddressPickUpOptions(){
+		for(i = 0; i < addressList.length; i++){
+			if(addressList[i].state == pickUpLocSelectedState){
+				
+				var address = $("<option value=\"" + addressList[i].street + "\">"
+						+ addressList[i].city + ":	" + addressList[i].street + "</option>");
+				
+				address.appendTo(RentCarPickUpAddressBody);
+			}else{
+				console.log('selectedState', pickUpLocSelectedState);
+			}
+		}
+	}
+	
+	function populateAddressReturnOptions(){
+		console.log(returnLocSelectedState);
+		for(i = 0; i < addressList.length; i++){
+			if(addressList[i].state == returnLocSelectedState){
+				
+				var address = $("<option value=\"" + addressList[i].street + "\">"
+						+ addressList[i].city + ":	" + addressList[i].street + "</option>");
+				
+				address.appendTo(RentCarReturnAddressBody);
+			}else{
+				console.log('selectedState', returnLocSelectedState);
+			}
+		}
+	}
+	
+	$("#RentCarPickUpLocState").on('change', function(){
+		pickUpLocSelectedState = $(this).val();
+		$("#RentCarPickUpLocAddress").html("");
+		
+		RentCarPickUpAddressBody = $("#RentCarPickUpLocAddress");
+		
+		RentCarPickUpAddressBody.empty();
+		
+		populateAddressPickUpOptions();
+	})
+	
+	$("#RentCarReturnLocState").on('change', function(){
+		returnLocSelectedState = $(this).val();
+		$("#RentCarReturnLocAddress").html("");
+		
+		RentCarReturnAddressBody = $("#RentCarReturnLocAddress");
+		
+		RentCarReturnAddressBody.empty();
+		
+		populateAddressReturnOptions();
+	})
 	
 	function createVehicleClassList(JsonObject) {
 		vehicleClassList.length = 0;
@@ -192,8 +274,8 @@ $(function() {
 		//TODO: get the actual userID
 		var userID = "dchi";
 		var class_ = $("#vehicleInfo :selected").val();
-		var pickupLocID = $("#RentCarPickUpLoc :selected").val();
-		var returnLocID = $("#RentCarReturnLoc :selected").val();
+		var pickupLocID = getAddressID(pickUpLocSelectedState, $("#RentCarPickUpLocAddress :selected").val()); 
+		var returnLocID = getAddressID(returnLocSelectedState, $("#RentCarReturnLocAddress :selected").val());
 		var gps = isChecked($("#RentCarGps").is(":checked"));
 		var damageWaiver = isChecked($("#RentCarDamageWaiver").is(":checked"));
 		var insurance = isChecked($("#RentCarInsurance").is(":checked"));
